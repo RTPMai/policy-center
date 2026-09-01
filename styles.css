@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Polk City Area Chamber — Business Policy Center
+   Polk City Area Chamber, Business Policy Center
    Brand accent lives in --brand. Change it once, it changes everywhere.
    ========================================================================== */
 
@@ -66,7 +66,14 @@ a:hover{ color:var(--dusk); }
   max-width:16ch;
 }
 
-.intro{ max-width:var(--measure); font-size:1.05rem; margin:0 0 20px; }
+.intro{ max-width:var(--measure); font-size:1.05rem; margin:0 0 14px; }
+
+.howto{
+  max-width:var(--measure);
+  font-size:0.93rem;
+  color:var(--dusk-soft);
+  margin:0 0 20px;
+}
 
 .stamp{
   display:inline-block;
@@ -225,6 +232,17 @@ details.entry > summary:hover .title{ color:var(--brand-deep); }
   margin-top:4px;
 }
 
+.plain{
+  display:block;
+  font-family:"Public Sans",sans-serif;
+  font-weight:400;
+  font-size:0.95rem;
+  line-height:1.5;
+  color:var(--dusk);
+  margin-top:9px;
+  max-width:56ch;
+}
+
 .chev{
   flex:none; width:20px; height:20px;
   margin-top:3px;
@@ -275,6 +293,16 @@ button.share{
 button.share:hover{ border-color:var(--brand); background:var(--brand-wash); }
 
 /* ---------- Watchlist, note, footer ---------- */
+
+.glossary{ margin:0; padding:0; max-width:var(--measure); }
+.glossary .term{ padding:14px 0; border-bottom:1px solid var(--rule-soft); }
+.glossary dt{
+  font-family:"Fraunces",Georgia,serif;
+  font-weight:600;
+  font-size:1.03rem;
+  margin:0 0 4px;
+}
+.glossary dd{ margin:0; font-size:0.94rem; color:var(--dusk-soft); }
 
 .watchlist{ list-style:none; padding:0; margin:0; max-width:var(--measure); }
 .watchlist li{ padding:12px 0; border-bottom:1px solid var(--rule-soft); }
