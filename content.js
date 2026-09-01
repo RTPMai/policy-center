@@ -420,24 +420,33 @@ const ENTRIES = [
     id: 'tax-iowa',
     group: 'tax',
     added: '2026-09-01',
+    updated: '2026-09-01',
     topics: ['tax'],
     title: 'Iowa taxes: income, sales, and what is on the ballot',
     meta: 'State level',
-    plain: 'Iowa income tax is a flat 3.8%. Sales tax filing and business tax accounts run through the Department of Revenue. There is also a ballot question in November that would make income tax rates harder to change.',
+    plain: 'Iowa income tax is a flat 3.8%. The window to protest your property assessment is April 2 to April 30 and it cannot be extended. There is also a tax question on the November ballot.',
     body: `
       <p><strong>Income tax.</strong> Iowa moved to a flat individual rate of 3.8%. For pass-through owners, your business income flows onto your personal return, so this rate is the one that hits you.</p>
       <p><strong>Sales tax and withholding.</strong> Registration, filing schedules, and permits all run through the Iowa Department of Revenue. Filing frequency depends on your volume and can change, so check your notices rather than assuming last year's schedule still applies.</p>
       <p><strong>Property tax.</strong> The 2026 overhaul is covered in the New Laws section. If you own a commercial building or apartments, read that one too.</p>
       <p><strong>On the November ballot.</strong> A constitutional amendment would require a two thirds vote of the Legislature to raise income tax rates, instead of a simple majority. See the Ballot section for the arguments on both sides.</p>`,
     matters: {
-      heading: 'The one to calendar',
+      heading: 'Put these four dates in your calendar right now',
       html: `
-        <p>Assessment notices and the window to protest your property assessment are the single most overlooked thing on this list. It is the one moment where a business owner can directly challenge a tax bill, it comes once a year, and most people miss it.</p>
-        <p>Confirm the dates with the Polk County Assessor and put them in your calendar now rather than finding out afterward.</p>`,
+        <p>The window to challenge your property assessment is the single most overlooked thing on this page. It is the one moment a business owner can directly push back on a tax bill, it comes once a year, and most people find out about it in June.</p>
+        <ul>
+          <li><strong>January 1.</strong> The assessment date. Whatever your property was worth that day is what the assessor is valuing, so that is the date your evidence has to speak to.</li>
+          <li><strong>By April 1.</strong> Assessment notices go out, but only if your value changed. No notice does not mean no assessment.</li>
+          <li><strong>April 2 to April 25.</strong> Informal review with the assessor. This is the easy path. You call, they often walk the property, and if they agree you are done. Free, and no formal filing. Go early. Late requests can get denied simply for lack of time to review them.</li>
+          <li><strong>April 2 to April 30.</strong> Formal written protest to the Board of Review. This is the hard deadline and it cannot be extended. If April 30 falls on a weekend, you get the next business day.</li>
+        </ul>
+        <p>One thing that trips people up: you must file with the Board of Review during that window to preserve any later appeal. If you skip it, you cannot go to the state appeal board or district court afterward.</p>
+        <p>The test the assessor applies is simple. Could you sell the property for that number today? If yes, the value is probably right. If clearly not, you have a case, and comparable sales are the evidence that wins it.</p>`,
     },
     sources: [
+      { label: 'How to appeal your assessment, with forms and deadlines', publisher: 'Polk County Assessor', url: 'https://www.polkcountyiowa.gov/county-assessor/appealing-your-assessment/' },
       { label: 'Business taxes, registration and filing', publisher: 'Iowa Department of Revenue', url: 'https://revenue.iowa.gov/taxes/file-my-taxes/business-taxes' },
-      { label: 'Property assessment information', publisher: 'Polk County Assessor', url: 'https://www.assess.co.polk.ia.us/' },
+      { label: 'What happens if you appeal past the Board of Review', publisher: 'Iowa Property Assessment Appeal Board', url: 'https://paab.iowa.gov/how-do-i-protest-local-board-review' },
     ],
   },
 
@@ -731,22 +740,26 @@ const ENTRIES = [
     id: 'grants-food-and-farm',
     group: 'money',
     added: '2026-09-01',
+    updated: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Food, farm, and anything you make from Iowa products',
-    meta: 'Choose Iowa Value-Added Grants. Next window opens December 2026.',
+    meta: 'Choose Iowa Value-Added Grants. Window opens about Dec. 1, closes mid-January.',
     plain: 'Up to $25,000 for equipment, a commercial kitchen, or an on-farm store. You have to match it dollar for dollar, and small businesses get preference.',
     body: `
       <p>The Iowa Department of Agriculture runs cost-share grants to help businesses sell more Iowa agricultural products, either by producing more or by reaching new markets.</p>
       <p><strong>What it covers:</strong> equipment used to produce value-added agricultural products, an on-farm store or commercial kitchen, and food hub development or expansion.</p>
-      <p><strong>The rules:</strong> up to $25,000. You must match the grant one to one from private sources. The project cannot already be underway when you apply, and it has to finish within 12 months. Preference goes to businesses under 50 employees.</p>`,
+      <p><strong>The rules:</strong> up to $25,000. You must match the grant one to one from private sources, in cash, financing or other grant funds. In-kind contributions do not count. The project cannot already be underway when you apply, and it has to finish within 12 months. Preference goes to businesses under 50 employees. Applications are scored and you need at least 70 points to be considered.</p>
+      <p><strong>The timing.</strong> The window has opened around December 1 and closed at noon in mid-January in recent years. The last round closed January 16. That is a short window over the holidays, so decide in November, not December.</p>
+      <p><strong>An important exception.</strong> Meat and dairy processing projects are <em>not</em> eligible for this grant. They have their own separate programs, the Butchery Innovation Grant and the Dairy Innovation Grant, on the same website.</p>`,
     matters: {
       heading: 'Who this actually fits here',
       html: `
-        <p>Think bakeries, butchers, coffee roasters, breweries, caterers, farm stands, anyone doing a commercial kitchen buildout, and any operation turning Iowa grown product into something you sell.</p>
+        <p>Think bakeries, coffee roasters, breweries, caterers, farm stands, anyone doing a commercial kitchen buildout, and any operation turning Iowa grown product into something you sell. If you are a butcher or a dairy operation, go straight to the separate grant for your industry instead.</p>
         <p>Watch the match requirement. If the grant covers $25,000, you need $25,000 of your own money in the project. Plan the cash flow before you apply, not after.</p>`,
     },
     sources: [
-      { label: 'Guidelines and eligible projects', publisher: 'Choose Iowa', url: 'https://www.chooseiowa.com/grants/valueadded' },
+      { label: 'Guidelines, scoring and eligible projects', publisher: 'Choose Iowa', url: 'https://www.chooseiowa.com/grants/valueadded' },
+      { label: 'All Choose Iowa grants, including butchery and dairy', publisher: 'Choose Iowa', url: 'https://www.chooseiowa.com/grants' },
     ],
   },
 
@@ -968,6 +981,7 @@ const ENTRIES = [
     sources: [
       { label: 'Candidate questionnaires for House District 45', publisher: 'Des Moines Register', url: 'https://bluewaterhealthyliving.com/news/national-news/iowa/meet-the-candidates-for-iowa-house-district-45-in-polk-county/' },
       { label: 'Three Iowa House incumbents lost their primaries', publisher: 'Iowa Capital Dispatch', url: 'https://iowacapitaldispatch.com/briefs/three-iowa-house-incumbents-lose-primary-elections/' },
+      { label: 'Wes Enos, the Republican nominee in Senate District 23', publisher: 'Des Moines Register', url: 'https://www.desmoinesregister.com/story/news/politics/elections/2026/08/19/wes-enos-republican-nominee-iowa-senate-district-23-election/91374099007/' },
       { label: 'Official list of everyone who filed to run', publisher: 'Iowa Secretary of State', url: 'https://sos.iowa.gov/sites/default/files/2026-04/2026%20Primary%20-%20Candidate%20List%20Database%20-%20All%20Elections_1.pdf' },
       { label: 'Find your legislators by address', publisher: 'Iowa Legislature', url: 'https://www.legis.iowa.gov/legislators/find' },
       { label: 'Look up your full sample ballot', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
