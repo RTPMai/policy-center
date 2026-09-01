@@ -136,6 +136,14 @@ const GROUPS = [
     lede: 'This is a big ballot. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
   },
   {
+    id: 'tax',
+    nav: 'Taxes',
+    season: 'navy',
+    title: 'Taxes',
+    blurb: 'What changed in federal and Iowa tax rules, what it means for equipment and deductions, and where to get real answers.',
+    lede: 'The chamber does not give tax advice and nothing here is tax advice. What this section does is tell you what changed and what to ask your accountant about, so you go into that conversation knowing which questions to raise.',
+  },
+  {
     id: 'law',
     nav: 'New laws',
     season: 'spring',
@@ -193,6 +201,18 @@ const GLOSSARY = [
     def: 'You pay for the work first, then send receipts and get paid back. Important to know, because it means you need the cash up front.',
   },
   {
+    term: 'Pass-through business',
+    def: 'A sole proprietorship, LLC, partnership, or S corporation. The business itself does not pay income tax. The profit passes through to your personal return and you pay it there. Most Polk City businesses are pass-throughs.',
+  },
+  {
+    term: 'Depreciation',
+    def: 'Deducting the cost of something expensive a little at a time over several years, instead of all at once. Full expensing means you get to skip that and take it all in year one.',
+  },
+  {
+    term: 'Placed in service',
+    def: 'The date equipment is installed and ready to use, which is what tax deadlines run on. Not the date you ordered it or paid for it. A machine still in the crate on December 31 does not count for that year.',
+  },
+  {
     term: 'Open seat',
     def: 'A race with no incumbent, because the current officeholder retired or is running for something else. Open seats are usually closer, and the winner arrives with no fixed positions on local issues.',
   },
@@ -244,6 +264,150 @@ const GLOSSARY = [
    ========================================================================== */
 
 const ENTRIES = [
+  {
+    id: 'tax-federal-changes',
+    group: 'tax',
+    added: '2026-09-01',
+    topics: ['tax', 'money'],
+    title: 'Federal tax rules changed a lot, mostly in small business favor',
+    meta: 'One Big Beautiful Bill Act, signed July 4, 2025',
+    plain: 'The biggest change: if you buy equipment, you can usually deduct the whole cost the year you buy it instead of spreading it over years. Several other business breaks were made permanent.',
+    body: `
+      <p>A federal tax law signed in July 2025 rewrote several rules that matter to small businesses. Most took effect for the 2025 tax year, with more kicking in for 2026. The short version of what changed:</p>
+      <ul>
+        <li><strong>Full expensing of equipment came back.</strong> You can deduct 100% of the cost of qualifying equipment in the year you put it into service, rather than a little each year. This was in the middle of being phased out. It was restored.</li>
+        <li><strong>The Section 179 limits went way up.</strong> This is the other way to write off equipment immediately. The ceiling is far above anything a typical Polk City business would hit, which effectively means the limit is no longer the constraint.</li>
+        <li><strong>The pass-through deduction was made permanent.</strong> If you file as a sole proprietor, LLC, partnership, or S corp, this is the deduction on your business income that was set to expire at the end of 2025. It did not expire. There is also a new minimum deduction for anyone with at least a small amount of qualified business income.</li>
+        <li><strong>Research costs are deductible again in the year you spend them</strong>, rather than spread over five years. Relevant if you develop products or software.</li>
+        <li><strong>Meals you provide to employees for your own convenience are no longer deductible</strong> starting in 2026. They used to be half deductible. This is one of the few changes that goes the wrong way.</li>
+      </ul>`,
+    matters: {
+      heading: 'What to actually do with this',
+      html: `
+        <p>Do not try to apply any of this yourself from a web page. Take this list to your accountant and ask which ones apply to your entity type and your numbers. That conversation is worth having before December, not in March.</p>
+        <p>One honest warning about researching this online. While putting this page together we found accounting firm blog posts giving flatly contradictory figures for the same year, including wrong deduction percentages and outdated limits. Some appear to be describing the old law. If a number matters to your decision, get it from the IRS or from your own CPA, not from a search result.</p>`,
+    },
+    sources: [
+      { label: 'Small business and self-employed tax center', publisher: 'IRS', url: 'https://www.irs.gov/businesses/small-businesses-self-employed' },
+      { label: 'How to depreciate property, Publication 946', publisher: 'IRS', url: 'https://www.irs.gov/publications/p946' },
+      { label: 'Free counseling on business finances', publisher: "America's SBDC Iowa", url: 'https://iowasbdc.org/' },
+    ],
+  },
+
+  {
+    id: 'tax-equipment-vehicles',
+    group: 'tax',
+    added: '2026-09-01',
+    topics: ['tax', 'money', 'development'],
+    title: 'Buying equipment or a work vehicle? Timing matters right now.',
+    meta: 'Section 179 and bonus depreciation',
+    plain: 'Full first-year write-off is confirmed for 2026 but not guaranteed after that. If a purchase is coming anyway, the year you make it can change your tax bill.',
+    body: `
+      <p>There are two ways to deduct the cost of equipment up front, and they work together. Your accountant will pick the combination. What you need to know as an owner:</p>
+      <ul>
+        <li><strong>2026 is confirmed at 100%.</strong> Property placed in service this year can be fully deducted. What happens in 2027 is not settled. A phase-down could resume, or Congress could extend it. Watch for legislation late this year.</li>
+        <li><strong>"Placed in service" is the deadline, not "ordered."</strong> Equipment sitting in a crate on December 31 does not count. It has to be installed and ready to use.</li>
+        <li><strong>Vehicles are their own mess.</strong> SUVs in the common weight range are capped at a much lower amount than other equipment. Pickups with a long cargo bed and cargo vans without rear seating generally are not. The weight rating on the sticker inside your driver's door is what decides it.</li>
+        <li><strong>You need more than half business use</strong> for the vehicle to qualify at all, and your deduction is reduced to the business percentage.</li>
+        <li><strong>Section 179 cannot create a loss.</strong> It is capped at your business income. Anything unused carries forward.</li>
+      </ul>`,
+    matters: {
+      heading: 'The practical version',
+      html: `
+        <p>If you were already planning to replace a truck, a mower, a walk-in cooler, a point of sale system, or shop equipment, ask your accountant whether doing it this year rather than next is worth real money. Sometimes it is a lot. Sometimes it is nothing, because you cannot use the deduction anyway.</p>
+        <p>What you should not do is buy something you did not need in order to get a deduction. A write-off gives you back a fraction of what you spent. Spending $40,000 to save $9,000 is still spending $31,000.</p>`,
+    },
+    sources: [
+      { label: 'About Form 4562, the form this gets claimed on', publisher: 'IRS', url: 'https://www.irs.gov/forms-pubs/about-form-4562' },
+      { label: 'How to depreciate property, Publication 946', publisher: 'IRS', url: 'https://www.irs.gov/publications/p946' },
+    ],
+  },
+
+  {
+    id: 'tax-deductions-basics',
+    group: 'tax',
+    added: '2026-09-01',
+    topics: ['tax'],
+    title: 'What actually counts as a business deduction',
+    meta: 'The rule, and the three things people get wrong',
+    plain: 'An expense has to be ordinary and necessary for your trade. Meals are half deductible, entertainment is not deductible at all, and missing paperwork is the top reason deductions get thrown out.',
+    body: `
+      <p>The underlying test has not changed. To be deductible, an expense must be <strong>ordinary</strong>, meaning common and accepted in your line of work, and <strong>necessary</strong>, meaning helpful and appropriate. A caterer buying a commercial mixer passes. The same caterer buying a boat for "client entertainment" does not.</p>
+      <p>Three things people consistently get wrong:</p>
+      <ul>
+        <li><strong>Meals versus entertainment.</strong> A meal with a client is generally half deductible. Tickets to a game or a round of golf are not deductible at all, and have not been for years. If the meal happens at the entertainment event, keep it on a separate receipt.</li>
+        <li><strong>Meals for your own staff.</strong> Food you provide to employees for your convenience lost its deduction starting in 2026. If you have been feeding a crew and deducting half of it, that changed.</li>
+        <li><strong>Records written after the fact.</strong> The single most common reason a deduction gets disallowed is documentation created later. Mileage logs, receipts, and a note of the business purpose need to be kept as you go. A reconstructed log is weak evidence.</li>
+      </ul>`,
+    matters: {
+      heading: 'Why this is on a chamber website',
+      html: `
+        <p>Not because we can tell you what to deduct. Because these three mistakes are common, cost real money, and are entirely avoidable with a habit rather than an expert.</p>
+        <p>If you take one thing from this entry: set up a way to capture receipts and mileage the day they happen. A shoebox works. A phone app works. Doing it in March does not.</p>`,
+    },
+    sources: [
+      { label: 'Deducting business expenses', publisher: 'IRS', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/deducting-business-expenses' },
+      { label: 'Business expenses, Publication 535 guidance', publisher: 'IRS', url: 'https://www.irs.gov/forms-pubs/about-publication-535' },
+    ],
+  },
+
+  {
+    id: 'tax-iowa',
+    group: 'tax',
+    added: '2026-09-01',
+    topics: ['tax'],
+    title: 'Iowa taxes: income, sales, and what is on the ballot',
+    meta: 'State level',
+    plain: 'Iowa income tax is a flat 3.8%. Sales tax filing and business tax accounts run through the Department of Revenue. There is also a ballot question in November that would make income tax rates harder to change.',
+    body: `
+      <p><strong>Income tax.</strong> Iowa moved to a flat individual rate of 3.8%. For pass-through owners, your business income flows onto your personal return, so this rate is the one that hits you.</p>
+      <p><strong>Sales tax and withholding.</strong> Registration, filing schedules, and permits all run through the Iowa Department of Revenue. Filing frequency depends on your volume and can change, so check your notices rather than assuming last year's schedule still applies.</p>
+      <p><strong>Property tax.</strong> The 2026 overhaul is covered in the New Laws section. If you own a commercial building or apartments, read that one too.</p>
+      <p><strong>On the November ballot.</strong> A constitutional amendment would require a two thirds vote of the Legislature to raise income tax rates, instead of a simple majority. See the Ballot section for the arguments on both sides.</p>`,
+    matters: {
+      heading: 'The one to calendar',
+      html: `
+        <p>Assessment notices and the window to protest your property assessment are the single most overlooked thing on this list. It is the one moment where a business owner can directly challenge a tax bill, it comes once a year, and most people miss it.</p>
+        <p>Confirm the dates with the Polk County Assessor and put them in your calendar now rather than finding out afterward.</p>`,
+    },
+    sources: [
+      { label: 'Business taxes, registration and filing', publisher: 'Iowa Department of Revenue', url: 'https://revenue.iowa.gov/taxes/file-my-taxes/business-taxes' },
+      { label: 'Property assessment information', publisher: 'Polk County Assessor', url: 'https://www.assess.co.polk.ia.us/' },
+    ],
+  },
+
+  {
+    id: 'tax-where-to-get-help',
+    group: 'tax',
+    added: '2026-09-01',
+    topics: ['tax', 'money'],
+    title: 'Where to get real answers, including free ones',
+    meta: 'The chamber does not give tax advice',
+    plain: 'Some of this help costs nothing. If you do not have an accountant, the SBDC and The Iowa Center will talk through your situation for free.',
+    body: `
+      <p>To be direct about it: the chamber cannot tell you what to deduct or how to file. The rules turn on your entity type, your income, and details of your situation that we do not know. Getting that wrong hurts you and it would hurt the chamber's credibility.</p>
+      <p>What we can do is point you at people who can.</p>
+      <ul>
+        <li><strong>A CPA or enrolled agent.</strong> If you do not have one, ask other members. This is one of the most useful referrals the chamber can make.</li>
+        <li><strong>America's SBDC Iowa.</strong> Free one on one counseling, including financial and recordkeeping questions. They will not file your return, but they will help you understand your books.</li>
+        <li><strong>The Iowa Center.</strong> Coaching and lending for owners who have trouble with conventional bank financing.</li>
+        <li><strong>SCORE.</strong> Free mentoring from working and retired executives.</li>
+        <li><strong>The IRS Small Business Tax Center.</strong> Free, authoritative, and better organized than people expect. When a website and the IRS disagree, the IRS is right.</li>
+      </ul>`,
+    matters: {
+      heading: 'A word on tax scams',
+      html: `
+        <p>If someone contacts you promising a large refund or credit you have never heard of, treat it as a scam until proven otherwise. Employee retention credit fraud hit a lot of small businesses, and the ones who filed bad claims are the ones who had to pay it back with penalties.</p>
+        <p>The IRS does not open contact by phone, text, or email demanding payment. If you get that call, hang up.</p>`,
+    },
+    sources: [
+      { label: 'Small business and self-employed tax center', publisher: 'IRS', url: 'https://www.irs.gov/businesses/small-businesses-self-employed' },
+      { label: 'Free business counseling', publisher: "America's SBDC Iowa", url: 'https://iowasbdc.org/' },
+      { label: 'Coaching and small business loans', publisher: 'The Iowa Center', url: 'https://theiowacenter.org/' },
+      { label: 'Tax scams and consumer alerts', publisher: 'IRS', url: 'https://www.irs.gov/newsroom/tax-scams-consumer-alerts' },
+    ],
+  },
+
   {
     id: 'property-tax-sf2472',
     group: 'law',
