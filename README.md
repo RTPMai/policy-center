@@ -193,7 +193,7 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 ## Before you launch
 
 
-- [ ] Finish spot checking the remaining grant entries against their source links. The Choose Iowa entry was checked and corrected in September; the others have not been rechecked since they were written.
+- [ ] Spot check the three grant entries not yet rechecked: `grants-start-here`, `grants-targeted-small-business`, `grants-nonprofit-and-community`, and `grants-where-to-look`. The other three were checked and corrected in September, and two of them had errors.
 - [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
 - [ ] Put a recurring monthly reminder on the review owner's calendar, and a separate one-off reminder for November 4 to rewrite the Ballot section with results.
