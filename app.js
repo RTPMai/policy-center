@@ -1,14 +1,15 @@
 /* ==========================================================================
    Polk City Area Chamber, Business Policy Center
 
-   Routing, rendering, search, deep links.
+   Routing, rendering, search, deep links, change tracking.
    You should not need to edit this file. All content lives in content.js.
 
    Addresses this file understands:
      #/            the home page
      #/grants      a section, using the group id
-     #/terms       words and sources
-     #/search?q=x  search results across everything
+     #/whats-new   everything added or changed since the last review
+     #/terms       words, sources, and the archive
+     #/search?q=x  search across everything
      #entry-id     one entry, opened inside its section
    ========================================================================== */
 
@@ -27,6 +28,16 @@
     sun: 't-sun', autumn: 't-autumn', spring: 't-spring', winter: 't-winter',
   };
 
+  /* ---------- if content.js failed to load, say so instead of showing nothing ---------- */
+
+  if (typeof ENTRIES === 'undefined' || typeof GROUPS === 'undefined' || typeof SITE === 'undefined') {
+    view.innerHTML =
+      '<div class="t-navy"><header class="sec-head"><h1>This page did not load correctly</h1>' +
+      '<p>The content file is missing or has an error in it. Try refreshing. If it keeps happening, ' +
+      'please let the chamber know so we can fix it.</p></header></div>';
+    return;
+  }
+
   /* ---------- small helpers ---------- */
 
   function esc(s) {
@@ -41,6 +52,13 @@
     return (d.textContent || '').toLowerCase();
   }
 
+  function todayISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+
   function groupById(id) {
     for (var i = 0; i < GROUPS.length; i++) if (GROUPS[i].id === id) return GROUPS[i];
     return null;
@@ -51,12 +69,40 @@
     return null;
   }
 
+  /* Archived entries stay reachable by their old links but drop out of
+     lists, counts and search. */
+  function live() {
+    return ENTRIES.filter(function (e) { return !e.archived; });
+  }
+
+  function archived() {
+    return ENTRIES.filter(function (e) { return e.archived; });
+  }
+
   function inGroup(id) {
-    return ENTRIES.filter(function (e) { return e.group === id; });
+    return live().filter(function (e) { return e.group === id; });
   }
 
   function tint(group) {
     return SEASON_CLASS[group && group.season] || 't-navy';
+  }
+
+  /* A section can carry an expiry date, for content that goes stale on a
+     known day. The November ballot is the obvious case. */
+  function isExpired(g) {
+    return !!(g && g.expires && todayISO() > g.expires);
+  }
+
+  function changeFlag(e) {
+    var since = SITE.previousReviewISO;
+    if (!since) return null;
+    if (e.updated && e.updated > since) return 'Updated';
+    if (e.added && e.added > since) return 'New';
+    return null;
+  }
+
+  function changed() {
+    return live().filter(function (e) { return changeFlag(e); });
   }
 
   function toast(msg) {
@@ -66,23 +112,45 @@
     toast._t = setTimeout(function () { toastEl.hidden = true; }, 2400);
   }
 
-  /* Build a searchable blob per entry, once. */
+  /* Search index. Singular and plural both indexed so "taxes" finds "tax". */
+  function variants(word) {
+    var out = [word];
+    if (/(ch|sh|s|x|z)$/.test(word)) out.push(word + 'es'); else out.push(word + 's');
+    if (/ies$/.test(word)) out.push(word.slice(0, -3) + 'y');
+    if (/es$/.test(word)) out.push(word.slice(0, -2));
+    if (/s$/.test(word)) out.push(word.slice(0, -1));
+    return out;
+  }
+
   ENTRIES.forEach(function (e) {
-    e._search = [
+    var raw = [
       e.title, e.meta, e.plain, stripTags(e.body),
       e.matters ? e.matters.heading + ' ' + stripTags(e.matters.html) : '',
       (e.sources || []).map(function (s) { return s.label + ' ' + s.publisher; }).join(' '),
       (e.topics || []).join(' '),
     ].join(' ').toLowerCase();
+
+    var words = raw.match(/[a-z0-9]+/g) || [];
+    var bag = {};
+    words.forEach(function (w) { variants(w).forEach(function (v) { bag[v] = 1; }); });
+    e._search = raw + ' ' + Object.keys(bag).join(' ');
   });
 
   /* ---------- shared pieces ---------- */
 
   function entryHTML(e, showSectionTag) {
     var g = groupById(e.group);
+    var flag = changeFlag(e);
 
-    var tag = showSectionTag && g
-      ? '<span class="from-section">' + esc(g.nav) + '</span>'
+    var tags = '';
+    if (e.archived) tags += '<span class="pill pill-archived">No longer current</span>';
+    if (flag && !e.archived) tags += '<span class="pill pill-' + flag.toLowerCase() + '">' + flag + '</span>';
+    if (showSectionTag && g) tags += '<span class="pill pill-section">' + esc(g.nav) + '</span>';
+    if (tags) tags = '<span class="pills">' + tags + '</span>';
+
+    var notice = e.archived
+      ? '<p class="archived-note">This item is kept here because a link to it may have been shared. ' +
+        'It is no longer current and is not part of the sections above.</p>'
       : '';
 
     var sources = (e.sources || []).length
@@ -97,9 +165,9 @@
       ? '<div class="matters"><h4>' + esc(e.matters.heading) + '</h4>' + e.matters.html + '</div>'
       : '';
 
-    return '<details class="entry ' + tint(g) + '" id="' + esc(e.id) + '">' +
+    return '<details class="entry ' + tint(g) + (e.archived ? ' is-archived' : '') + '" id="' + esc(e.id) + '">' +
       '<summary>' +
-        '<span class="title">' + tag + esc(e.title) +
+        '<span class="title">' + tags + esc(e.title) +
           '<span class="meta">' + esc(e.meta) + '</span>' +
           (e.plain ? '<span class="plain">' + esc(e.plain) + '</span>' : '') +
         '</span>' +
@@ -107,10 +175,14 @@
           '<path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
         '</svg>' +
       '</summary>' +
-      '<div class="body">' + e.body + matters + sources +
+      '<div class="body">' + notice + e.body + matters + sources +
         '<div class="entry-actions"><button type="button" class="share" data-id="' + esc(e.id) + '">Copy link to this item</button></div>' +
       '</div>' +
     '</details>';
+  }
+
+  function expiredBanner(g) {
+    return '<div class="expired"><strong>Out of date.</strong> ' + esc(g.expiredNote || '') + '</div>';
   }
 
   function toolsHTML() {
@@ -130,13 +202,36 @@
   function renderHome() {
     var cards = GROUPS.map(function (g) {
       var n = inGroup(g.id).length;
-      return '<a class="card ' + tint(g) + '" href="#/' + esc(g.id) + '">' +
-        (g.badge ? '<span class="card-badge">' + esc(g.badge) + '</span>' : '') +
+      var expired = isExpired(g);
+      var fresh = inGroup(g.id).filter(changeFlag).length;
+
+      var badge = expired
+        ? '<span class="card-badge card-badge-stale">Out of date</span>'
+        : (g.badge ? '<span class="card-badge">' + esc(g.badge) + '</span>' : '');
+
+      return '<a class="card ' + tint(g) + '" href="#/' + esc(g.id) + '">' + badge +
         '<h2>' + esc(g.title) + '</h2>' +
         '<p>' + esc(g.blurb) + '</p>' +
-        '<span class="card-count">' + n + (n === 1 ? ' item' : ' items') + '</span>' +
+        '<span class="card-count">' + n + (n === 1 ? ' item' : ' items') +
+          (fresh ? '<span class="card-fresh">' + fresh + ' new</span>' : '') +
+        '</span>' +
       '</a>';
     }).join('');
+
+    var fresh = changed();
+    var whatsNew = fresh.length
+      ? '<section class="whatsnew">' +
+          '<h2 class="block-title">What changed since ' + esc(SITE.previousReviewLabel || 'the last review') + '</h2>' +
+          '<ul class="fresh-list">' +
+            fresh.slice(0, 6).map(function (e) {
+              var g = groupById(e.group);
+              return '<li><a href="#' + esc(e.id) + '">' + esc(e.title) + '</a> ' +
+                '<span class="fresh-meta">' + esc(changeFlag(e)) + ' in ' + esc(g ? g.nav : '') + '</span></li>';
+            }).join('') +
+          '</ul>' +
+          (fresh.length > 6 ? '<p><a href="#/whats-new">See all ' + fresh.length + ' changes</a></p>' : '') +
+        '</section>'
+      : '';
 
     view.innerHTML =
       '<section class="hero">' +
@@ -146,6 +241,7 @@
         '<p class="stamp">Last reviewed ' + esc(SITE.reviewedOn) + '. ' + esc(SITE.cadence) + '.</p>' +
       '</section>' +
       '<div class="cards">' + cards + '</div>' +
+      whatsNew +
       toolsHTML() +
       '<section class="tools-block">' +
         '<h2 class="block-title">Not sure what a word means?</h2>' +
@@ -159,7 +255,6 @@
 
     var entries = inGroup(id);
 
-    /* Only offer topic filters when a section has enough items to need them. */
     var used = TOPICS.filter(function (t) {
       return entries.some(function (e) { return (e.topics || []).indexOf(t.id) !== -1; });
     });
@@ -178,6 +273,7 @@
         '<h1>' + esc(g.title) + '</h1>' +
         '<p>' + esc(g.lede) + '</p>' +
       '</header>' +
+      (isExpired(g) ? expiredBanner(g) : '') +
       chips +
       '<div id="list">' + entries.map(function (e) { return entryHTML(e, false); }).join('') + '</div>' +
       '<p class="empty" id="none" hidden>Nothing in this section matches that filter.</p>' +
@@ -204,7 +300,31 @@
     }
   }
 
+  function renderWhatsNew() {
+    var fresh = changed();
+    var body = fresh.length
+      ? '<p class="count">' + fresh.length + (fresh.length === 1 ? ' item' : ' items') + '</p>' +
+        fresh.map(function (e) { return entryHTML(e, true); }).join('')
+      : '<p class="empty">Nothing has changed since the last review. Everything on this page is as it was on ' +
+        esc(SITE.reviewedOn) + '.</p>';
+
+    view.innerHTML = '<div class="t-navy">' +
+      '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
+      '<header class="sec-head">' +
+        '<h1>What changed</h1>' +
+        '<p>Everything added or rewritten since the last review, so you do not have to reread the whole page.</p>' +
+      '</header>' + body +
+    '</div>';
+  }
+
   function renderTerms() {
+    var arch = archived();
+    var archBlock = arch.length
+      ? '<h2 class="subhead">Archive</h2>' +
+        '<p class="block-lede">Older items, kept so that links already shared keep working. These are no longer current.</p>' +
+        arch.map(function (e) { return entryHTML(e, true); }).join('')
+      : '';
+
     view.innerHTML = '<div class="t-navy">' +
       '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
       '<header class="sec-head">' +
@@ -231,13 +351,14 @@
         '<p>The chamber does take positions on business issues. That is part of the job. When we do, the board votes on it, we say plainly that it is the chamber\'s position, and we keep it separate from the factual items.</p>' +
         '<p>If something here looks wrong or unfair to you, tell us. Getting it right matters more than getting it out fast.</p>' +
       '</div>' +
+      archBlock +
     '</div>';
   }
 
   function renderSearch(q) {
     var terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var hits = terms.length
-      ? ENTRIES.filter(function (e) {
+      ? live().filter(function (e) {
           return terms.every(function (t) { return e._search.indexOf(t) !== -1; });
         })
       : [];
@@ -271,12 +392,18 @@
   function renderChrome() {
     document.title = SITE.title + ' | ' + SITE.org;
 
+    var freshCount = changed().length;
+
     nav.innerHTML =
       '<li><a href="#/" data-route="/">Home</a></li>' +
       GROUPS.map(function (g) {
         return '<li><a href="#/' + esc(g.id) + '" data-route="/' + esc(g.id) + '" ' +
-          'style="--nav-tint:var(--' + esc(g.season) + ')">' + esc(g.nav) + '</a></li>';
+          'style="--nav-tint:var(--' + esc(g.season) + ')">' + esc(g.nav) +
+          (isExpired(g) ? '<span class="nav-stale" title="Out of date">!</span>' : '') + '</a></li>';
       }).join('') +
+      (freshCount
+        ? '<li><a href="#/whats-new" data-route="/whats-new">What changed<span class="nav-count">' + freshCount + '</span></a></li>'
+        : '') +
       '<li><a href="#/terms" data-route="/terms">Words and sources</a></li>';
 
     document.getElementById('foot-review').textContent =
@@ -317,13 +444,16 @@
       var id = h.slice(2);
       if (!id) { renderHome(); markNav('/'); }
       else if (id === 'terms') { renderTerms(); markNav('/terms'); }
+      else if (id === 'whats-new') { renderWhatsNew(); markNav('/whats-new'); }
       else if (groupById(id)) { renderSection(id); markNav('/' + id); }
       else { renderHome(); markNav('/'); }
     } else {
-      /* A bare #entry-id link, most likely shared from social or email.
-         Open that entry inside its own section. */
       var e = entryById(h.slice(1));
-      if (e) {
+      if (e && e.archived) {
+        renderTerms();
+        markNav('/terms');
+        openEntry = e.id;
+      } else if (e) {
         renderSection(e.group);
         markNav('/' + e.group);
         openEntry = e.id;
