@@ -177,8 +177,8 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 ## Before you launch
 
-- [ ] Confirm the Polk County Recorder nominee with the Auditor's election office at (515) 286-3080. That was a three-way Democratic primary and the entry does not name a winner.
-- [ ] Double check the Senate District 23 Republican nominee on a sample ballot. Wes Enos defeating Mike Bousselot is well sourced but was the one primary result we could not verify against a second independent source.
+- [ ] Double check the Senate District 23 Republican nominee on a sample ballot or at polkelectionia.gov. Wes Enos defeating Mike Bousselot is well sourced but is the one primary result not confirmed against a second independent source.
+- [ ] Get the property assessment protest window from the Polk County Assessor and add the dates to the Iowa tax entry. That entry currently calls it the most overlooked date on the list and then does not give the date.
 - [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
 - [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
 - [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
