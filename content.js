@@ -93,26 +93,43 @@ const TOOLS = [
 ];
 
 /* The three groups entries fall into. */
+/* The four sections of the site. Each becomes its own page.
+   "nav" is the short label in the top menu.
+   "season" ties the section to a color from the chamber logo.
+   "blurb" is what shows on the home page card. */
 const GROUPS = [
   {
-    id: 'law',
-    title: 'New laws',
-    lede: 'The Iowa Legislature finished its work for the year on May 3. These are now law, or will be soon.',
-  },
-  {
     id: 'money',
+    nav: 'Grants',
+    season: 'sun',
     title: 'Money you can go after',
-    lede: 'Grants, loans, and programs a Polk City area business can actually apply for. Each one says who qualifies, because most of these are not open to everybody. Deadlines move, so always check the source link before you plan around a date.',
+    blurb: 'Grants, loans, and free help a Polk City area business can actually apply for, with straight talk about who qualifies.',
+    lede: 'Each entry says who qualifies, because most of these are not open to everybody. Deadlines move, so always check the source link before you plan around a date.',
   },
   {
     id: 'ballot',
+    nav: 'Ballot',
+    season: 'winter',
+    badge: 'November 3',
     title: 'On the ballot November 3',
-    lede: 'This is a big ballot. Federal, state, county, and township offices are all on it, plus a statewide question about taxes. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
+    blurb: 'Federal, state, county, and township offices are all on this ballot, plus a statewide question about taxes.',
+    lede: 'This is a big ballot. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
+  },
+  {
+    id: 'law',
+    nav: 'New laws',
+    season: 'spring',
+    title: 'New laws',
+    blurb: 'What changed at the Statehouse this year, and what it does to your taxes, your hiring, and your paperwork.',
+    lede: 'The Iowa Legislature finished its work for the year on May 3. These are now law, or will be soon.',
   },
   {
     id: 'local',
+    nav: 'Polk City',
+    season: 'autumn',
     title: 'Happening in Polk City',
-    lede: 'City and county decisions that touch local businesses directly. This part changes the most.',
+    blurb: 'City and county decisions that touch local businesses directly. This is the part that changes the most.',
+    lede: 'Projects, funding, and priorities worth watching close to home.',
   },
 ];
 
