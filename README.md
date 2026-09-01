@@ -177,8 +177,8 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 ## Before you launch
 
-- [ ] Call the Polk County Auditor's election office at (515) 286-3080 and confirm the two Republican primary winners: Iowa Senate District 23 (Mike Bousselot or Wes Enos) and Iowa House District 45 (Brian Lohse or Austin Stubbs). Both entries currently name the two who filed and tell readers to check their sample ballot. Replace that with the actual nominee.
-- [ ] While you have them on the phone, confirm the Polk County Recorder nominee. That was a three-way Democratic primary and the entry does not name a winner.
+- [ ] Confirm the Polk County Recorder nominee with the Auditor's election office at (515) 286-3080. That was a three-way Democratic primary and the entry does not name a winner.
+- [ ] Double check the Senate District 23 Republican nominee on a sample ballot. Wes Enos defeating Mike Bousselot is well sourced but was the one primary result we could not verify against a second independent source.
 - [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
 - [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
 - [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
