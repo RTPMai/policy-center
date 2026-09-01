@@ -25,7 +25,7 @@
   var toastEl = document.getElementById('toast');
 
   var SEASON_CLASS = {
-    sun: 't-sun', autumn: 't-autumn', spring: 't-spring', winter: 't-winter',
+    sun: 't-sun', autumn: 't-autumn', spring: 't-spring', winter: 't-winter', navy: 't-navy',
   };
 
   /* ---------- if content.js failed to load, say so instead of showing nothing ---------- */
