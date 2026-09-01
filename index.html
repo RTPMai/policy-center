@@ -4,13 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business Policy Center | Polk City Area Chamber of Commerce</title>
-<meta name="description" content="New laws, the November ballot, and local decisions, explained in plain language for Polk City area businesses.">
-<meta name="theme-color" content="#dd8c1a">
+<meta name="description" content="New laws, the November ballot, grants, and local decisions, explained in plain language for Polk City area businesses.">
+<meta name="theme-color" content="#002734">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Business Policy Center | Polk City Area Chamber of Commerce">
-<meta property="og:description" content="New laws, the November ballot, and local decisions, explained in plain language for Polk City area businesses.">
+<meta property="og:description" content="New laws, the November ballot, grants, and local decisions, explained in plain language for Polk City area businesses.">
 <meta property="og:site_name" content="Polk City Area Chamber of Commerce">
+
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/logo-mark.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,74 +24,47 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="head">
-  <div class="wrap">
-    <p class="org" id="org"></p>
-    <h1 id="page-title"></h1>
-    <p class="intro" id="intro"></p>
-    <p class="howto">Each item below starts with one sentence telling you the gist. Click any item to read more and see where the information came from.</p>
-    <p class="stamp" id="stamp"></p>
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="#/" aria-label="Business Policy Center, home">
+      <img src="assets/logo-horizontal.svg" alt="Polk City Area Chamber of Commerce" class="brand-full">
+      <img src="assets/logo-mark.svg" alt="Polk City Area Chamber of Commerce" class="brand-mark">
+      <span class="brand-sub">Business Policy Center</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="sections">Menu</button>
   </div>
+  <nav class="sections" id="sections" aria-label="Sections">
+    <div class="wrap">
+      <ul id="section-nav"></ul>
+    </div>
+  </nav>
 </header>
 
-<section class="tools-band">
+<div class="searchbar">
   <div class="wrap">
-    <h2 class="band-title">Quick answers</h2>
-    <p class="band-lede">Official state and county tools. These open in a new tab.</p>
-    <div class="tools" id="tools"></div>
-  </div>
-</section>
-
-<div class="controls" id="controls">
-  <div class="wrap controls-inner">
     <div class="search-field">
       <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
         <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
         <line x1="13.5" y1="13.5" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <input type="search" id="search" placeholder="Search. Try &ldquo;property tax&rdquo; or &ldquo;hiring&rdquo;" aria-label="Search entries">
-      <button type="button" id="clear-search" class="clear" hidden aria-label="Clear search">Clear</button>
+      <input type="search" id="search" placeholder="Search everything. Try &ldquo;grant&rdquo; or &ldquo;property tax&rdquo;" aria-label="Search all entries">
+      <button type="button" id="clear-search" class="clear" hidden>Clear</button>
     </div>
-    <div class="chips" id="chips" role="group" aria-label="Filter by topic"></div>
-    <p class="count" id="count" role="status" aria-live="polite"></p>
   </div>
 </div>
 
 <main id="main">
-  <div class="wrap">
-    <div id="results"></div>
-
-    <p class="no-results" id="no-results" hidden>
-      Nothing matches that. Try a different word, or
-      <button type="button" class="linkish" id="reset">start over</button>.
-    </p>
-
-    <section class="sec" id="glossary-sec">
-      <h2 id="terms">Words you may run into</h2>
-      <p class="sec-lede">A few terms show up over and over in local government. Here is what they actually mean.</p>
-      <dl class="glossary" id="glossary"></dl>
-    </section>
-
-    <section class="sec" id="watch-sec">
-      <h2 id="watch">Where this comes from</h2>
-      <p class="sec-lede">These are the sources we read every month. Nothing here is secret. Follow them yourself if you want. Our job is reading them so you do not have to.</p>
-      <ul class="watchlist" id="watchlist"></ul>
-
-      <div class="note">
-        <h3>Where the chamber stands on politics</h3>
-        <p>This page tells you what a law or ballot question does and who it affects. Where there is a real disagreement, we give you both sides. We do not endorse candidates and we do not tell you how to vote.</p>
-        <p>The chamber does take positions on business issues. That is part of the job. When we do, the board votes on it, we say plainly that it is the chamber's position, and we keep it separate from the factual items above.</p>
-        <p>If something here looks wrong or unfair to you, tell us. Getting it right matters more than getting it out fast.</p>
-      </div>
-    </section>
-  </div>
+  <div class="wrap" id="view"></div>
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <p id="foot-review"></p>
-    <p id="foot-contact"></p>
-    <p id="foot-home"></p>
+    <img src="assets/logo-stacked.svg" alt="" class="foot-logo" aria-hidden="true">
+    <div class="foot-text">
+      <p id="foot-review"></p>
+      <p id="foot-contact"></p>
+      <p id="foot-home"></p>
+    </div>
   </div>
 </footer>
 
