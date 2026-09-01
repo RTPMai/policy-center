@@ -10,7 +10,7 @@ Plain HTML, CSS and JavaScript. No build step, no framework, no database, no mon
 
 | File | What it does | Do you edit it? |
 | --- | --- | --- |
-| `content.js` | Every word on the page — entries, links, dates | **Yes. This is the one.** |
+| `content.js` | Every word on the page. Entries, links, dates. | **Yes. This is the one.** |
 | `index.html` | The page skeleton | Rarely |
 | `styles.css` | Colors, type, layout | Only to change the look |
 | `app.js` | Search, filters, share links | No |
@@ -19,7 +19,7 @@ The brand amber is set once, at the top of `styles.css`, as `--brand`. Change th
 
 ---
 
-## Part 1 — Put it online
+## Part 1. Put it online
 
 You need two free accounts: **GitHub** (stores the files) and **Vercel** (serves them to the public). Roughly 20 minutes the first time.
 
@@ -56,7 +56,7 @@ Two options, and you can do both.
 
 ---
 
-## Part 2 — The monthly update
+## Part 2. The monthly update
 
 **You only ever open `content.js`.**
 
@@ -76,13 +76,17 @@ Two options, and you can do both.
 reviewedOn: 'September 1, 2026',
 ```
 
-A stale date on a page like this does more damage than no page at all. If you did not review it, do not change the date — but do not leave an old one sitting there for three months either.
+A stale date on a page like this does more damage than no page at all. If you did not actually review it, do not change the date. But do not leave a three month old date sitting there either.
 
 **Add a new entry.** Copy the template in the comment block above the `ENTRIES` list, fill it in, and paste it into the list. New entries go at the top of their section.
 
+**Write the `plain` line carefully.** That one sentence is what shows on the closed card, before anyone clicks. For most readers it is the only thing they will read. Write it the way you would explain it to a member across the counter. No bill numbers, no jargon, just what changed and whether they should care.
+
+**Add any hard words to the glossary.** If you have to use a term like TIF or rollback, add it to the `GLOSSARY` list in the same file. It renders near the bottom of the page automatically.
+
 **Retire an old entry.** Delete it, or move it down. Anything more than a year old and no longer live should come off.
 
-**Rewrite the "what this means" paragraphs.** Do not just copy them forward. That interpretation is the entire product — the facts are available on any news site.
+**Rewrite the "what this means" paragraphs.** Do not just copy them forward. That plain language explanation is the whole point of the page. The raw facts are on any news site.
 
 ### The three rules
 
@@ -92,7 +96,7 @@ A stale date on a page like this does more damage than no page at all. If you di
 
 ---
 
-## Part 3 — Sharing single items
+## Part 3. Sharing single items
 
 Every entry has its own link. Open an entry and click **Copy link to this item**, or just copy what is in the browser address bar. You get something like:
 
@@ -104,12 +108,12 @@ Anyone opening that link lands with the entry already expanded and highlighted. 
 
 ---
 
-## Part 4 — If something goes wrong
+## Part 4. If something goes wrong
 
 **The page is blank or half-rendered.**
-Almost always a typo in `content.js` — a missing comma, an unmatched quote, or a stray backtick. Open the live page, press F12, and look at the Console tab. It will name the line. If you cannot spot it, revert: on GitHub, open `content.js`, click **History**, find the last version that worked, and restore it.
+Almost always a typo in `content.js`. Usually a missing comma, an unmatched quote, or a stray backtick. Open the live page, press F12, and look at the Console tab. It will name the line. If you cannot spot it, revert: on GitHub, open `content.js`, click **History**, find the last version that worked, and restore it.
 
-**Apostrophes.** Inside backticks (`` ` ``) apostrophes are fine. Inside single quotes they are not — write `'the city\'s plan'` or switch that value to double quotes.
+**Apostrophes.** Inside backticks (`` ` ``) apostrophes are fine. Inside single quotes they are not. Write `'the city\'s plan'` or switch that value to double quotes.
 
 **Fonts look plain.** The page loads Fraunces and Public Sans from Google Fonts. If those are blocked it falls back to Georgia and a system sans. Everything still works, it just looks plainer.
 
