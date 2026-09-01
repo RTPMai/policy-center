@@ -223,6 +223,43 @@ const GLOSSARY = [
 ];
 
 /* ==========================================================================
+   MEMBER REFERRALS
+
+   Chamber members who do a particular kind of work, shown inside the entry
+   where someone is most likely to need them. This is the referral benefit
+   in practice: a member gets named at the exact moment a question comes up.
+
+   THREE RULES. These are not suggestions.
+
+   1. ALL OR NONE. If you list one accountant, you list every member who
+      does that work. Picking favorites is how a chamber loses members.
+      If you are not willing to list all of them, list none and point at
+      the full directory instead.
+
+   2. ALPHABETICAL, ALWAYS. The list renders in the order you type it, so
+      type it alphabetically. Do not order by tier, by who asked, or by
+      who you like. Someone will notice.
+
+   3. UPDATE IT WHEN MEMBERSHIP CHANGES. A member who joins and does not
+      get added has a real complaint. A member who lapses and stays listed
+      is worse, because the chamber is now vouching for a non-member.
+
+   Leave a list empty and nothing renders. That is the safe default, and
+   it is where this ships until the board approves the names.
+   ========================================================================== */
+
+const MEMBER_REFERRALS = {
+  accounting: {
+    heading: 'Chamber members who do this work',
+    /* Add members here as { name, url, phone }. url and phone are optional.
+       Example:
+         { name: 'Example Accounting', url: 'https://example.com', phone: '515-555-0100' },
+    */
+    members: [],
+  },
+};
+
+/* ==========================================================================
    ENTRIES
 
    Template for a new entry. Copy this, fill it in, paste it into the list:
@@ -233,6 +270,7 @@ const GLOSSARY = [
      added: '2026-09-01',          // the date you added it. Drives the New badge.
      updated: '2026-10-01',        // optional. Only when you rewrite an existing item.
      archived: false,              // optional. See ARCHIVING below.
+     referrals: 'accounting',      // optional. Shows the member list of that name.
      topics: ['tax'],              // one or more topic ids
      title: 'Headline in plain words',
      meta: 'Bill number, date, status',
@@ -380,6 +418,7 @@ const ENTRIES = [
     id: 'tax-where-to-get-help',
     group: 'tax',
     added: '2026-09-01',
+    referrals: 'accounting',
     topics: ['tax', 'money'],
     title: 'Where to get real answers, including free ones',
     meta: 'The chamber does not give tax advice',
