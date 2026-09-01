@@ -87,6 +87,21 @@ Two options, and you can do both.
 4. Scroll down, write a short note like `September review`, click **Commit changes**.
 5. Wait about a minute, then reload the live site.
 
+### The monthly pass, in order
+
+Set aside 30 minutes. Work down this list.
+
+1. **Check the city.** Council agendas and minutes since last time. This is where local items surface first and where most of the value on this page comes from.
+2. **Check the county.** News and announcements, for grants, CDBG activity, and supervisor decisions.
+3. **Check the state.** During session, January through roughly April, do this weekly instead of monthly. Outside session, monthly is plenty.
+4. **Check anything with a date on it.** Grant windows especially. The Choose Iowa window opens around December 1 and closes mid-January, which is easy to miss over the holidays.
+5. **Write or update entries.** New ones get `added` set to today. Rewritten ones get `updated` set to today.
+6. **Archive anything stale.** `archived: true`, never delete.
+7. **Move the four date fields.** See below. This is the step that makes the New and Updated badges work, and it is the easiest one to forget.
+8. **Reload the live site on a phone** and confirm it looks right.
+
+If you get through a month with nothing to change, that is a legitimate outcome. Still move the review dates so members know the page was actually looked at.
+
 ### What to change each month
 
 **Always move the two dates.** Near the top of `content.js`:
@@ -177,13 +192,11 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 ## Before you launch
 
-- [ ] Double check the Senate District 23 Republican nominee on a sample ballot or at polkelectionia.gov. Wes Enos defeating Mike Bousselot is well sourced but is the one primary result not confirmed against a second independent source.
-- [ ] Get the property assessment protest window from the Polk County Assessor and add the dates to the Iowa tax entry. That entry currently calls it the most overlooked date on the list and then does not give the date.
-- [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
-- [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
+
+- [ ] Finish spot checking the remaining grant entries against their source links. The Choose Iowa entry was checked and corrected in September; the others have not been rechecked since they were written.
 - [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
-- [ ] Decide who owns the monthly review, by name, and put it on a calendar.
+- [ ] Put a recurring monthly reminder on the review owner's calendar, and a separate one-off reminder for November 4 to rewrite the Ballot section with results.
 - [ ] Confirm the board is comfortable with the "Where the chamber stands on politics" statement in `index.html`.
 
 ## A note on the grants section
