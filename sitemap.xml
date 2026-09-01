@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Search engines can only see the home page of this site, because the
+  sections are addressed with a # in the URL. That is a limitation of how
+  the page is built, not something this file can fix. The entry below is
+  the one address worth submitting to Google Search Console.
+
+  Replace the domain if the site lives somewhere other than
+  polkcitychamber.com, and update lastmod at each review.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://polkcitychamber.com/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
