@@ -173,6 +173,10 @@ const GLOSSARY = [
     def: 'You pay for the work first, then send receipts and get paid back. Important to know, because it means you need the cash up front.',
   },
   {
+    term: 'Open seat',
+    def: 'A race with no incumbent, because the current officeholder retired or is running for something else. Open seats are usually closer, and the winner arrives with no fixed positions on local issues.',
+  },
+  {
     term: 'Retention election',
     def: 'A yes or no vote on whether a sitting judge keeps the job. There is no opponent. You are only voting to keep them or not.',
   },
@@ -613,21 +617,25 @@ const ENTRIES = [
     id: 'congressional-district',
     group: 'ballot',
     topics: ['elections'],
-    title: 'U.S. House: check which district you are in',
-    meta: 'Polk County is split between two districts',
-    plain: 'Polk County is divided between the 3rd and 4th districts, so your neighbors down the road may not vote in the same race you do. Check your address.',
+    title: 'U.S. House: Polk City is in the 3rd District',
+    meta: 'Zach Nunn (R) and Sarah Trone Garriott (D)',
+    plain: 'One of the closest House races in the country runs right through here. Nunn has held the seat since 2022. Trone Garriott is a state senator who has flipped two Republican seats before.',
     body: `
-      <p>Polk County is split between Iowa's 3rd and 4th congressional districts. That means the answer is different depending on where in the county you are.</p>
-      <p>The 3rd District is held by Zach Nunn, a Republican. State Sen. Sarah Trone Garriott is running against him. It covers the eastern and southern parts of Polk County and is expected to be one of the closest House races in the country.</p>
-      <p>The 4th District is an open seat, because Randy Feenstra ran for governor instead. Chris McGowan is the Republican nominee.</p>`,
+      <p>Polk County is split between Iowa's 3rd and 4th congressional districts. Polk City is in the <strong>3rd</strong>, along with the rest of Senate District 23.</p>
+      <p><strong>Zach Nunn (Republican)</strong> is the incumbent, from Bondurant. He won the seat in 2022 by unseating Cindy Axne, and was reelected in 2024.</p>
+      <p><strong>Sarah Trone Garriott (Democrat)</strong> is a state senator from West Des Moines and an ordained Lutheran pastor who works on interfaith engagement for the Des Moines Area Religious Council. She won the June 2 primary. State Rep. Jennifer Konfrst had been running and dropped out in favor of her.</p>
+      <p>This is expected to be one of the most competitive House races in the country. Polling last fall showed Trone Garriott ahead of Nunn in Polk County by a wide margin, while Nunn led comfortably in the rural parts of the district outside Polk and Dallas counties.</p>`,
     matters: {
-      heading: 'How to check, and why bother',
-      html: `<p>Use the Polk County district maps linked below, or call the Auditor's office. This is worth knowing even if you never vote. Your congressional office is who you call when a federal agency is holding something up, when a permit is stuck, or when you have an SBA problem. Calling the wrong one wastes a week.</p>`,
+      heading: 'Why this office matters even if you never vote',
+      html: `
+        <p>Your congressional office is who you call when a federal agency is sitting on something. A stuck permit, an SBA loan problem, an export question, a dispute with a federal contractor. That is casework, and every congressional office does it regardless of party.</p>
+        <p>Because the district line runs through Polk County, a neighbor a few miles away may have a different office. If your address is near the edge of town, confirm it on the county district maps before you make that call.</p>`,
     },
     sources: [
-      { label: 'District maps for Polk County', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/election-maps/' },
       { label: '3rd District race overview', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Iowa%27s_3rd_Congressional_District_election,_2026' },
       { label: 'How analysts rate the 3rd District race', publisher: 'Cook Political Report', url: 'https://www.cookpolitical.com/house/race/483096' },
+      { label: 'Constituent services for the 3rd District', publisher: 'Office of Rep. Zach Nunn', url: 'https://nunn.house.gov/' },
+      { label: 'District maps for Polk County', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/election-maps/' },
     ],
   },
 
@@ -635,22 +643,38 @@ const ENTRIES = [
     id: 'state-legislature-races',
     group: 'ballot',
     topics: ['elections', 'tax'],
-    title: 'Your state representative is on the ballot, and this is the race that matters most locally',
-    meta: 'All 100 Iowa House seats. Half the Iowa Senate.',
-    plain: 'Everyone in Iowa votes for a state representative this year. These are the people who wrote the property tax law and who will decide the bills coming back in January.',
+    title: 'Your state senate seat is open for the first time in 15 years',
+    meta: 'Polk City is in House District 45 and Senate District 23',
+    plain: 'Jack Whitver retired, so the senate seat covering Polk City is wide open. Your state rep, Brian Lohse, is also on the ballot. These two races matter more to local business than anything else you will vote on.',
     body: `
-      <p>Every one of the 100 seats in the Iowa House is up on November 3, for a two-year term. Iowa Senate seats run on four-year terms, staggered, so about half the Senate is also on the ballot depending on where you live.</p>
-      <p>These are the offices that produced everything in the New Laws section above. They are also the ones who will take up right to repair, energy costs, and penny rounding when the session opens in January.</p>`,
+      <p>Polk City sits in <strong>Iowa Senate District 23</strong> and <strong>Iowa House District 45</strong>. Both are on the November 3 ballot.</p>
+
+      <h4>Senate District 23, an open seat</h4>
+      <p>The district covers rural northern Polk County plus parts of eastern Polk and eastern Dallas counties, including Polk City, Alleman, Elkhart, Granger, Runnells, and parts of Grimes and Urbandale.</p>
+      <p>Jack Whitver of Grimes held this seat and served as Senate Majority Leader from 2018. In September 2025 he announced he would not run again and stepped down as leader, citing ongoing treatment following a brain tumor diagnosis in 2024. That leaves the seat open.</p>
+      <ul>
+        <li><strong>Tony Thompson (Democrat)</strong>, a farmer and business owner from Elkhart. He was unopposed in the primary.</li>
+        <li><strong>Republican side.</strong> Two candidates ran in the June 2 primary. Mike Bousselot, currently the state senator for District 21 in Ankeny, who moved over to run here with Whitver's backing. And Wes Enos of Bondurant. Check your sample ballot for the nominee.</li>
+      </ul>
+
+      <h4>House District 45</h4>
+      <p>The district includes Polk City, Alleman, Elkhart, Bondurant, Runnells, Carlisle and nearby communities.</p>
+      <ul>
+        <li><strong>Brian Lohse (Republican)</strong>, the incumbent, of Bondurant. He has served since 2019 and spent eight years on the Bondurant city council before that. He is an attorney who also owns a restaurant, a fitness facility, and rental property. Austin Stubbs of Bondurant also ran in the June 2 Republican primary, so confirm the nominee on your sample ballot.</li>
+        <li><strong>Kendra Haug (Democrat)</strong> of Bondurant. She was unopposed in the primary.</li>
+      </ul>`,
     matters: {
-      heading: 'Why the chamber cares more about this than the top of the ticket',
+      heading: 'Why the chamber watches these two races hardest',
       html: `
-        <p>A governor's race gets the attention. But your state representative is the person who returns a phone call from a Polk City business owner, and there are only a handful of them covering our area.</p>
-        <p>These races are also small enough that showing up matters. A few dozen engaged business owners is a meaningful bloc in a state House district. That is the whole argument for the chamber building an advocacy voice.</p>
-        <p>Use the lookup tools at the top of this page to find out exactly who represents your address and who is challenging them. Then, whichever way you lean, introduce yourself before the session starts.</p>`,
+        <p>Everything in the New Laws section came out of these two chambers. The property tax cap, the TIF changes, the child care program. So will right to repair and the energy bill when the session opens in January.</p>
+        <p>An open senate seat is a rare opening. Whoever wins arrives with no established relationships and no fixed positions on local issues. A chamber that shows up early gets heard. One that waits until February does not.</p>
+        <p>These races are also small enough that a few dozen business owners is a real bloc. That is not true of a governor's race. It is very true here.</p>
+        <p>Worth noting for anyone deciding whether this is worth their time: the current representative runs a restaurant and rental property himself, and the Democratic senate candidate is a farmer and business owner. These are people who will understand a conversation about input costs and staffing.</p>`,
     },
     sources: [
+      { label: 'Official list of everyone who filed to run', publisher: 'Iowa Secretary of State', url: 'https://sos.iowa.gov/sites/default/files/2026-04/2026%20Primary%20-%20Candidate%20List%20Database%20-%20All%20Elections_1.pdf' },
       { label: 'Find your legislators by address', publisher: 'Iowa Legislature', url: 'https://www.legis.iowa.gov/legislators/find' },
-      { label: 'District maps for Polk County', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/election-maps/' },
+      { label: 'Why the senate seat came open', publisher: 'Iowa Capital Dispatch', url: 'https://iowacapitaldispatch.com/2025/09/16/iowa-senate-majority-leader-jack-whitver-announces-retirement-will-not-seek-reelection/' },
       { label: 'Look up your full sample ballot', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
     ],
   },
@@ -659,29 +683,44 @@ const ENTRIES = [
     id: 'county-township-local-races',
     group: 'ballot',
     topics: ['elections'],
-    title: 'County, township, and the local offices nobody reads about',
+    title: 'County offices, township officers, and judges',
     meta: 'Also on the November 3 ballot',
-    plain: 'This is not just a federal election. County and township officers are on the same ballot, plus some boards you have probably never voted for on purpose. Pull your sample ballot before you go.',
+    plain: 'Polk City does not pick a county supervisor this year. But the county attorney, recorder, and treasurer are on everyone\'s ballot, along with township officers, three county boards, and judges.',
     body: `
-      <p>Iowa holds its general election in even-numbered years to elect federal, state, county, and township officers. Constitutional amendments and public measures for cities and counties can appear on the same ballot.</p>
-      <p><strong>What may be on yours, depending on your address:</strong></p>
+      <h4>County supervisor: not your district this year</h4>
+      <p>Three of the five seats on the Polk County Board of Supervisors are up, but none of them cover Polk City.</p>
       <ul>
-        <li><strong>Polk County offices.</strong> These run on staggered terms, so which ones appear depends on the year and on which supervisor district you are in.</li>
-        <li><strong>Township officers.</strong> Polk City sits in a township, and township trustees and clerks are elected on this ballot.</li>
-        <li><strong>Three nonpartisan countywide boards.</strong> Hospital Board of Trustees, Soil and Water Conservation Board, and Agricultural Extension Council.</li>
-        <li><strong>Judicial retention.</strong> Yes or no votes on whether sitting judges keep their seats. No opponents, just keep or do not keep.</li>
-        <li><strong>Local public measures.</strong> Cities and counties can put bond issues or other questions on this ballot. Check yours.</li>
+        <li><strong>District 1:</strong> the southwest side of Des Moines, West Des Moines, Clive, and Windsor Heights.</li>
+        <li><strong>District 4:</strong> east and southeast Des Moines, Pleasant Hill, Runnells, Camp Township, and Four Mile Township. Longtime supervisor Tom Hockensmith is retiring.</li>
+        <li><strong>District 5:</strong> north and northwestern Des Moines, the East Village, and parts of downtown. Longtime supervisor Angela Connolly is retiring.</li>
       </ul>
-      <p>City council and school board seats are not on this ballot. Iowa moved those to odd-numbered years, so the next ones are in November 2027.</p>`,
+
+      <h4>Countywide offices, on every Polk County ballot</h4>
+      <ul>
+        <li><strong>County Attorney.</strong> Kimberly Graham is the Democratic candidate.</li>
+        <li><strong>County Recorder.</strong> An open seat. Longtime recorder Julie Haggerty is not seeking reelection.</li>
+        <li><strong>County Treasurer.</strong> Mary Wells is the Democratic candidate.</li>
+      </ul>
+      <p>Several of these had no Republican file, so some may be effectively decided already. Your sample ballot will show who actually appears.</p>
+
+      <h4>Everything else down the ballot</h4>
+      <ul>
+        <li><strong>Township officers.</strong> Polk City sits in a township, and trustees and the clerk are elected on this ballot.</li>
+        <li><strong>Three nonpartisan county boards.</strong> Hospital Board of Trustees, Soil and Water Conservation Board, and Agricultural Extension Council.</li>
+        <li><strong>Judicial retention.</strong> Yes or no on whether sitting judges keep their seats. No opponents.</li>
+        <li><strong>Local public measures.</strong> Cities and counties can put bond issues or other questions on this ballot.</li>
+      </ul>
+      <p>City council and school board are not on this ballot. Iowa moved those to odd years, so the next ones are November 2027.</p>`,
     matters: {
-      heading: 'The two-minute version',
+      heading: 'Why the county board still matters to you',
       html: `
-        <p>County government sets your county property tax levy and runs the CDBG program mentioned elsewhere on this page. The Board of Supervisors also decides Polk County's community grant awards. Those decisions reach local businesses more directly than most people realize.</p>
-        <p>The single most useful thing you can do is pull your sample ballot a week early and look up anything you do not recognize. The bottom of a ballot is where most people give up, and those are usually the races decided by the fewest votes.</p>
-        <p><strong>Chamber note:</strong> we are confirming with the Polk County Auditor exactly which county and legislative districts cover Polk City addresses, and will list the specific races here once that is verified. We would rather leave a gap than print the wrong name.</p>`,
+        <p>You are not voting for a supervisor this year, but three of five seats are changing hands, and two long-serving members are leaving. That reshapes the board for years.</p>
+        <p>This is the body that sets the county property tax levy, decides how Polk County spends its Community Development Block Grant money, and awards the county community betterment grants covered in the Grants section. Those decisions reach Polk City whether or not we picked the people making them.</p>
+        <p>Practical advice: pull your sample ballot about a week early and look up anything you do not recognize. The bottom of the ballot is where most people quit, and those races are often decided by the fewest votes.</p>`,
     },
     sources: [
-      { label: 'What the general election covers and who is running', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/news-and-press-releases/general-election-november-3-2026-candidate-information/' },
+      { label: 'Who is running for Polk County offices', publisher: 'Des Moines Register', url: 'https://www.aol.com/articles/running-polk-county-elections-2026-110146287.html' },
+      { label: 'What the general election covers', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/news-and-press-releases/general-election-november-3-2026-candidate-information/' },
       { label: 'Sample ballot lookup by address', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
       { label: 'Election dates, early voting, and absentee', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/' },
     ],
