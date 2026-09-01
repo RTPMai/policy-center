@@ -123,10 +123,18 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 ## Before you launch
 
-- [ ] Confirm which congressional district Polk City is in, with the Polk County Auditor, and fill in the `congressional-district` entry properly.
+- [ ] Call the Polk County Auditor's election office at (515) 286-3080 and confirm which congressional district, state legislative districts, and county supervisor district cover Polk City addresses. Fill those names into the `congressional-district`, `state-legislature-races`, and `county-township-local-races` entries.
+- [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
+- [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
 - [ ] Decide who owns the monthly review, by name, and put it on a calendar.
-- [ ] Confirm the board is comfortable with the "How the chamber handles politics" statement in `index.html`.
+- [ ] Confirm the board is comfortable with the "Where the chamber stands on politics" statement in `index.html`.
+
+## A note on the grants section
+
+Grant deadlines and award amounts change annually. Treat that section as the shortest-lived content on the page and check it every time you review.
+
+Two things it deliberately tells members that most grant lists do not. First, which programs are closed to for-profit businesses, so nobody wastes a week on an application they were never eligible for. Second, that anyone charging a fee to get you a government grant is running a scam. Both of those are worth keeping in as you edit.
 
 ---
 
