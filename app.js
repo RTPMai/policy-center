@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Polk City Area Chamber — Business Policy Center
+   Polk City Area Chamber, Business Policy Center
    Rendering, search, filtering, deep links.
 
    You should not need to edit this file. All content lives in content.js.
@@ -56,6 +56,7 @@
     e._search = [
       e.title,
       e.meta,
+      e.plain,
       plain(e.body),
       e.matters ? e.matters.heading + ' ' + plain(e.matters.html) : '',
       (e.sources || []).map(function (s) { return s.label + ' ' + s.publisher; }).join(' '),
@@ -66,11 +67,11 @@
   /* ---------- static chrome ---------- */
 
   function renderChrome() {
-    document.title = SITE.title + ' — ' + SITE.org;
+    document.title = SITE.title + ' | ' + SITE.org;
     els.org.textContent = SITE.org;
     els.title.textContent = SITE.title;
     els.intro.textContent = SITE.intro;
-    els.stamp.textContent = 'Last reviewed ' + SITE.reviewedOn + '  ·  ' + SITE.cadence;
+    els.stamp.textContent = 'Last reviewed ' + SITE.reviewedOn + '. ' + SITE.cadence + '.';
 
     els.tools.innerHTML = TOOLS.map(function (t) {
       return '<a class="tool" href="' + esc(t.url) + '" target="_blank" rel="noopener">' +
@@ -88,9 +89,16 @@
         '<span>' + esc(w.note) + '</span></li>';
     }).join('');
 
-    els.footReview.textContent = SITE.org + '. This page was last reviewed ' + SITE.reviewedOn +
-      '. Entries reflect public reporting as of the review date; verify against the linked sources before relying on anything here for a business or legal decision.';
-    els.footContact.innerHTML = 'Something missing, out of date, or affecting your business that we should be tracking? Email <a href="mailto:' +
+    var glossary = document.getElementById('glossary');
+    if (glossary && typeof GLOSSARY !== 'undefined') {
+      glossary.innerHTML = GLOSSARY.map(function (g) {
+        return '<div class="term"><dt>' + esc(g.term) + '</dt><dd>' + esc(g.def) + '</dd></div>';
+      }).join('');
+    }
+
+    els.footReview.textContent = SITE.org + '. Last reviewed ' + SITE.reviewedOn +
+      '. Everything here was accurate on that date. Check the linked sources before you make a business or legal decision based on it.';
+    els.footContact.innerHTML = 'Is something missing, out of date, or affecting your business that we should be tracking? Email <a href="mailto:' +
       esc(SITE.contactEmail) + '">' + esc(SITE.contactEmail) + '</a>.';
     els.footHome.innerHTML = '<a href="' + esc(SITE.chamberUrl) + '">Back to ' + esc(SITE.org) + '</a>';
   }
@@ -114,6 +122,7 @@
       '<summary>' +
         '<span class="title">' + esc(e.title) +
           '<span class="meta">' + esc(e.meta || '') + '</span>' +
+          (e.plain ? '<span class="plain">' + esc(e.plain) + '</span>' : '') +
         '</span>' +
         '<svg class="chev" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
           '<path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
