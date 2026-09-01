@@ -153,6 +153,20 @@
         'It is no longer current and is not part of the sections above.</p>'
       : '';
 
+    var refs = '';
+    var pool = (typeof MEMBER_REFERRALS !== 'undefined' && e.referrals) ? MEMBER_REFERRALS[e.referrals] : null;
+    if (pool && (pool.members || []).length) {
+      refs = '<div class="referrals"><h4>' + esc(pool.heading || 'Chamber members who do this work') + '</h4><ul>' +
+        pool.members.map(function (m) {
+          var name = m.url
+            ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.name) + '</a>'
+            : esc(m.name);
+          return '<li>' + name + (m.phone ? ' <span class="ref-phone">' + esc(m.phone) + '</span>' : '') + '</li>';
+        }).join('') +
+        '</ul><p class="ref-note">Listed alphabetically. These are chamber members, not chamber recommendations. ' +
+        'We do not vet, endorse, or take responsibility for the work of any business listed here.</p></div>';
+    }
+
     var sources = (e.sources || []).length
       ? '<div class="sources"><h4>Go deeper</h4><ul>' +
         e.sources.map(function (s) {
@@ -175,7 +189,7 @@
           '<path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
         '</svg>' +
       '</summary>' +
-      '<div class="body">' + notice + e.body + matters + sources +
+      '<div class="body">' + notice + e.body + matters + refs + sources +
         '<div class="entry-actions"><button type="button" class="share" data-id="' + esc(e.id) + '">Copy link to this item</button></div>' +
       '</div>' +
     '</details>';
