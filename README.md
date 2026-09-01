@@ -1,21 +1,38 @@
-# Business Policy Center
-
-A public web page for the Polk City Area Chamber of Commerce. It explains what state law, the November ballot, and local decisions mean for businesses in the Polk City area, with every claim linked to its source.
-
-Plain HTML, CSS and JavaScript. No build step, no framework, no database, no monthly cost.
-
----
-
 ## The files
 
 | File | What it does | Do you edit it? |
 | --- | --- | --- |
-| `content.js` | Every word on the page. Entries, links, dates. | **Yes. This is the one.** |
+| `content.js` | Every word on the page. Entries, sections, links, dates. | **Yes. This is the one.** |
 | `index.html` | The page skeleton | Rarely |
 | `styles.css` | Colors, type, layout | Only to change the look |
-| `app.js` | Search, filters, share links | No |
+| `app.js` | Sections, search, share links | No |
+| `assets/` | The three chamber logos | No |
 
-The brand amber is set once, at the top of `styles.css`, as `--brand`. Change that one line and the whole page follows.
+### How the page is organised
+
+It is one file, but it behaves like five pages. Members land on a home screen with four cards and pick where to go, instead of scrolling a wall of text.
+
+- **Home** shows the four section cards and the quick answer tools.
+- **Grants**, **Ballot**, **New laws**, and **Polk City** are the four sections. Each is its own screen.
+- **Words and sources** holds the glossary and the source list.
+- **Search** works across every section at once, from any screen.
+
+Adding a section to the `GROUPS` list in `content.js` automatically adds a card on the home page and an item in the top menu. You do not have to touch anything else.
+
+### The colors
+
+Every color on the site comes out of the chamber logo, and each section is tied to one of the four seasons in the roundel.
+
+| Section | Season | Color |
+| --- | --- | --- |
+| Grants | Summer sun | `#F19C30` |
+| Ballot | Winter | `#68A1B8` |
+| New laws | Spring leaf | `#838E52` |
+| Polk City | Autumn leaf | `#A36437` |
+
+Navy `#002734` from the wordmark carries the text, the header, and the footer. To change any of them, edit the variables at the top of `styles.css`.
+
+The logo files in `assets/` were rebuilt from the originals. The versions you sent were about 14 MB each, because Illustrator had packed every artboard and a large embedded image into them. These are the same artwork at roughly 40 KB, which matters on a phone.
 
 ---
 
@@ -33,7 +50,7 @@ You need two free accounts: **GitHub** (stores the files) and **Vercel** (serves
 ### Step 2. Upload the files
 
 1. On the new empty repository page, click **uploading an existing file**.
-2. Drag in all five files: `index.html`, `styles.css`, `content.js`, `app.js`, `README.md`.
+2. Drag in the five files: `index.html`, `styles.css`, `content.js`, `app.js`, `README.md`. Then click **Add file, Upload files** again and drag in the whole `assets` folder, which holds the three logos. GitHub keeps the folder structure.
 3. In the box at the bottom write `Initial version`, then click **Commit changes**.
 
 ### Step 3. Connect Vercel
@@ -104,7 +121,14 @@ Every entry has its own link. Open an entry and click **Copy link to this item**
 https://policy.polkcitychamber.com/#property-tax-sf2472
 ```
 
-Anyone opening that link lands with the entry already expanded and highlighted. Useful for social posts, member emails, and answering a specific question from a member without making them hunt.
+Anyone opening that link lands in the right section with the entry already expanded and highlighted. Useful for social posts, member emails, and answering a specific question without making someone hunt for it.
+
+You can also link straight to a whole section, which is handy when you post about a topic rather than a single item:
+
+```
+https://policy.polkcitychamber.com/#/grants
+https://policy.polkcitychamber.com/#/ballot
+```
 
 ---
 
@@ -114,6 +138,8 @@ Anyone opening that link lands with the entry already expanded and highlighted. 
 Almost always a typo in `content.js`. Usually a missing comma, an unmatched quote, or a stray backtick. Open the live page, press F12, and look at the Console tab. It will name the line. If you cannot spot it, revert: on GitHub, open `content.js`, click **History**, find the last version that worked, and restore it.
 
 **Apostrophes.** Inside backticks (`` ` ``) apostrophes are fine. Inside single quotes they are not. Write `'the city\'s plan'` or switch that value to double quotes.
+
+**The logos do not show up.** Check that the `assets` folder made it into the repository with all three SVG files inside. On GitHub, the folder should appear in the file list next to `index.html`.
 
 **Fonts look plain.** The page loads Fraunces and Public Sans from Google Fonts. If those are blocked it falls back to Georgia and a system sans. Everything still works, it just looks plainer.
 
@@ -126,6 +152,7 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 - [ ] Call the Polk County Auditor's election office at (515) 286-3080 and confirm which congressional district, state legislative districts, and county supervisor district cover Polk City addresses. Fill those names into the `congressional-district`, `state-legislature-races`, and `county-township-local-races` entries.
 - [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
 - [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
+- [ ] Open the site on a phone and walk all four sections. That is how most members will see it.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
 - [ ] Decide who owns the monthly review, by name, and put it on a calendar.
 - [ ] Confirm the board is comfortable with the "Where the chamber stands on politics" statement in `index.html`.
