@@ -41,6 +41,7 @@ const SITE = {
 /* Topic filters. Keep this list short. Four or five is the limit before
    people stop reading them. Each "id" must match the topics used in entries. */
 const TOPICS = [
+  { id: 'money', label: 'Money and grants' },
   { id: 'tax', label: 'Taxes and property' },
   { id: 'workforce', label: 'Hiring and staff' },
   { id: 'development', label: 'Growth and building' },
@@ -99,9 +100,14 @@ const GROUPS = [
     lede: 'The Iowa Legislature finished its work for the year on May 3. These are now law, or will be soon.',
   },
   {
+    id: 'money',
+    title: 'Money you can go after',
+    lede: 'Grants, loans, and programs a Polk City area business can actually apply for. Each one says who qualifies, because most of these are not open to everybody. Deadlines move, so always check the source link before you plan around a date.',
+  },
+  {
     id: 'ballot',
     title: 'On the ballot November 3',
-    lede: 'Two big open races and one question about taxes. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
+    lede: 'This is a big ballot. Federal, state, county, and township offices are all on it, plus a statewide question about taxes. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
   },
   {
     id: 'local',
@@ -140,6 +146,18 @@ const GLOSSARY = [
   {
     term: 'Toss-up',
     def: 'A rating used by election analysts. It means neither side is favored to win.',
+  },
+  {
+    term: 'Match, or cost share',
+    def: 'Money you have to put in yourself to unlock grant money. A 1 to 1 match means for every dollar the grant gives you, you spend a dollar of your own.',
+  },
+  {
+    term: 'Reimbursement grant',
+    def: 'You pay for the work first, then send receipts and get paid back. Important to know, because it means you need the cash up front.',
+  },
+  {
+    term: 'Retention election',
+    def: 'A yes or no vote on whether a sitting judge keeps the job. There is no opponent. You are only voting to keep them or not.',
   },
 ];
 
@@ -315,6 +333,195 @@ const ENTRIES = [
   },
 
   {
+    id: 'grants-start-here',
+    group: 'money',
+    topics: ['money'],
+    title: 'Start here before you chase any grant',
+    meta: 'Free help, no cost to you',
+    plain: 'Iowa pays for free business counseling. Use it before you spend a weekend on an application you were never eligible for.',
+    body: `
+      <p>Grant applications take real time. The fastest way to waste a weekend is to write one you never qualified for. These services are free and they will tell you straight.</p>
+      <ul>
+        <li><strong>America's SBDC Iowa.</strong> Free one on one counseling. They help with business plans, financials, and figuring out which funding actually fits you.</li>
+        <li><strong>The Iowa Center.</strong> Coaching plus small business lending for people who have trouble getting a conventional bank loan.</li>
+        <li><strong>IASourceLink.</strong> A directory of Iowa business resources, searchable by what you need.</li>
+        <li><strong>SCORE.</strong> Free mentoring from retired and working executives.</li>
+      </ul>`,
+    matters: {
+      heading: 'Why this is the first entry, not the last',
+      html: `
+        <p>Most grants below have a catch. Some are only for nonprofits. Some require you to spend your own money first and get paid back. Some need a match. A counselor spots that in ten minutes.</p>
+        <p>All of these are already listed on the chamber's Business Resources page. This entry just tells you which one to call first.</p>`,
+    },
+    sources: [
+      { label: 'Find your local SBDC counselor', publisher: "America's SBDC Iowa", url: 'https://iowasbdc.org/' },
+      { label: 'Coaching and small business loans', publisher: 'The Iowa Center', url: 'https://theiowacenter.org/' },
+      { label: 'Search Iowa business resources', publisher: 'IASourceLink', url: 'https://www.iasourcelink.com/' },
+      { label: 'The chamber resource list', publisher: 'Polk City Area Chamber', url: 'https://polkcitychamber.com/business-resources' },
+    ],
+  },
+
+  {
+    id: 'grants-training-staff',
+    group: 'money',
+    topics: ['money', 'workforce'],
+    title: 'Money to train the people you already have',
+    meta: 'Iowa Workforce Development and IEDA. Ongoing.',
+    plain: 'The state helps pay to train your current employees, run a paid internship, or start an apprenticeship. This is the most overlooked money on this page.',
+    body: `
+      <p>Several state programs help cover the cost of building up your workforce.</p>
+      <ul>
+        <li><strong>Iowa Jobs Training Program, known as 260F.</strong> Helps pay to train employees you already have. Runs through the community colleges, which for us means DMACC.</li>
+        <li><strong>Registered Apprenticeship.</strong> Training grants covering more than 1,000 occupations, administered by Iowa Workforce Development. Not just the building trades.</li>
+        <li><strong>Student Internship Program.</strong> Grants to small and medium companies in targeted industries to run paid internships.</li>
+        <li><strong>STEM Internship Program.</strong> Same idea, for science, technology, engineering, and math roles.</li>
+        <li><strong>Community College Consortium, known as 260.</strong> For training projects where two or more businesses go in together.</li>
+      </ul>`,
+    matters: {
+      heading: 'Why this fits Polk City',
+      html: `
+        <p>Most Polk City businesses are too small to run a training budget. These programs are built for exactly that situation, and they apply to people already on your payroll rather than new hires.</p>
+        <p>The consortium option is worth a look for the chamber itself. If several members need similar training, going in together may unlock money none of you could get alone. Tell the chamber if that interests you.</p>`,
+    },
+    sources: [
+      { label: 'Training and workforce funding programs', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/financial-assistance' },
+      { label: 'Apprenticeship programs', publisher: 'Iowa Workforce Development', url: 'https://www.iowaworkforcedevelopment.gov/' },
+    ],
+  },
+
+  {
+    id: 'grants-targeted-small-business',
+    group: 'money',
+    topics: ['money'],
+    title: 'If you are a woman, minority, veteran with a service-connected disability, or a person with a disability',
+    meta: 'Targeted Small Business certification, IEDA',
+    plain: 'Free state certification that gets you loans up to $50,000, early access to state contracts, and the right to sell up to $25,000 to state agencies without competitive bidding.',
+    body: `
+      <p>Iowa's Targeted Small Business program certifies businesses that are at least 51% owned, operated, and actively managed by a woman, a person with minority status, a service-disabled veteran, or a person with a disability.</p>
+      <p><strong>To qualify you must:</strong></p>
+      <ul>
+        <li>Be located in Iowa</li>
+        <li>Operate for profit</li>
+        <li>Average less than $4 million in gross income over the last three years</li>
+      </ul>
+      <p><strong>What certification gets you:</strong></p>
+      <ul>
+        <li>Low interest loans up to $50,000, with the rate capped at 10%</li>
+        <li>Early look at what state agencies are buying, before it goes public</li>
+        <li>The ability to sell up to $25,000 in goods or services to a state agency without competitive bidding</li>
+        <li>A listing in the public directory that both government and private buyers use</li>
+        <li>Free business counseling</li>
+      </ul>`,
+    matters: {
+      heading: 'Why this is worth an afternoon',
+      html: `
+        <p>The certification itself costs nothing. The $4 million ceiling means nearly every chamber member who fits the ownership criteria qualifies on size.</p>
+        <p>The part people miss is the procurement side. State agencies have to report how much they buy from certified businesses. That is a real sales channel, not a token gesture, and most eligible owners never sign up for it.</p>`,
+    },
+    sources: [
+      { label: 'Program details and how to qualify', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/small-business-entrepreneurs/small-business-resources/targeted-small-business-program' },
+      { label: 'Start a certification application', publisher: 'Iowa Economic Development Authority', url: 'https://iowaeda.microsoftcrmportals.com/tsb-application-start/' },
+      { label: 'What certification gets you as a state vendor', publisher: 'Iowa Dept. of Administrative Services', url: 'https://das.iowa.gov/vendors/targeted-small-business-program' },
+    ],
+  },
+
+  {
+    id: 'grants-food-and-farm',
+    group: 'money',
+    topics: ['money', 'development'],
+    title: 'Food, farm, and anything you make from Iowa products',
+    meta: 'Choose Iowa Value-Added Grants. Next window opens December 2026.',
+    plain: 'Up to $25,000 for equipment, a commercial kitchen, or an on-farm store. You have to match it dollar for dollar, and small businesses get preference.',
+    body: `
+      <p>The Iowa Department of Agriculture runs cost-share grants to help businesses sell more Iowa agricultural products, either by producing more or by reaching new markets.</p>
+      <p><strong>What it covers:</strong> equipment used to produce value-added agricultural products, an on-farm store or commercial kitchen, and food hub development or expansion.</p>
+      <p><strong>The rules:</strong> up to $25,000. You must match the grant one to one from private sources. The project cannot already be underway when you apply, and it has to finish within 12 months. Preference goes to businesses under 50 employees.</p>`,
+    matters: {
+      heading: 'Who this actually fits here',
+      html: `
+        <p>Think bakeries, butchers, coffee roasters, breweries, caterers, farm stands, anyone doing a commercial kitchen buildout, and any operation turning Iowa grown product into something you sell.</p>
+        <p>Watch the match requirement. If the grant covers $25,000, you need $25,000 of your own money in the project. Plan the cash flow before you apply, not after.</p>`,
+    },
+    sources: [
+      { label: 'Guidelines and eligible projects', publisher: 'Choose Iowa', url: 'https://www.chooseiowa.com/grants/valueadded' },
+    ],
+  },
+
+  {
+    id: 'grants-manufacturers-and-startups',
+    group: 'money',
+    topics: ['money', 'development'],
+    title: 'Manufacturers, inventors, and anyone selling outside Iowa',
+    meta: 'CIRAS, IEDA Innovation Continuum, and STEP',
+    plain: 'Equipment grants up to $50,000 for manufacturers, up to $75,000 for federal research applications, and reimbursement for the cost of finding customers in other states or countries.',
+    body: `
+      <p><strong>Smart manufacturing grants.</strong> For small and mid-sized manufacturers adopting new technology. Equipment grants cover up to $50,000, and connected-technology infrastructure up to $25,000. Open to manufacturers with roughly 3 to 124 full-time employees. You need a CIRAS assessment first, and CIRAS is at Iowa State.</p>
+      <p><strong>America's Seed Fund support.</strong> If you are going after a federal SBIR or STTR research grant, Iowa will put in up to $75,000. That is $50,000 once you win a phase one award and another $25,000 when you submit a phase two proposal.</p>
+      <p><strong>The Iowa Innovation Continuum.</strong> Five state-backed funds that invest in Iowa companies through loans or royalty agreements rather than plain grants. These are for technology and high growth businesses, not Main Street retail.</p>
+      <p><strong>STEP export grant.</strong> Reimburses eligible small businesses for the cost of expanding into markets outside Iowa.</p>`,
+    matters: {
+      heading: 'Be honest about whether this is you',
+      html: `
+        <p>Most of these are not for a retail shop or a service business. They are for manufacturers, product companies, and technology startups.</p>
+        <p>The manufacturing grants are the most likely fit for a Polk City area member. If you make something in a building with equipment in it, the CIRAS assessment is free and worth the call regardless of whether you apply.</p>`,
+    },
+    sources: [
+      { label: 'Grants and funding programs', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/financial-assistance/grants-funding' },
+      { label: 'Manufacturing assessments and assistance', publisher: 'Iowa State University Extension', url: 'https://www.extension.iastate.edu/program/community-and-leadership' },
+    ],
+  },
+
+  {
+    id: 'grants-nonprofit-and-community',
+    group: 'money',
+    topics: ['money', 'development'],
+    title: 'Community project money, and the catch on it',
+    meta: 'Prairie Meadows and Polk County. Applications open December, close late February.',
+    plain: 'There is a lot of casino-funded grant money in Polk County, from $100 up to $1 million. Read this before you get excited: it is for nonprofits, not for-profit businesses.',
+    body: `
+      <p>Since 1989, Polk County and Prairie Meadows have put more than $1.8 billion back into the community through grant programs. There are two related tracks.</p>
+      <p><strong>Prairie Meadows grants.</strong> Community Betterment Grants run from $100 to $99,999 for small and medium projects. Legacy Grants run from $100,000 to $1 million for large signature projects. Applications typically open in December and close at the end of February. Categories include arts and culture, economic development, education, and health and human services.</p>
+      <p><strong>Polk County Community Betterment Grants.</strong> Funded from the county's share of Prairie Meadows profits and awarded by the Board of Supervisors.</p>
+      <p><strong>The eligibility catch.</strong> Applicants must be nonprofit, tax-exempt organizations. A for-profit business cannot apply directly. Organizations under religious management are not eligible for the county program under state law.</p>`,
+    matters: {
+      heading: 'How a business actually uses this',
+      html: `
+        <p>You cannot apply for your storefront. But the chamber is a nonprofit, and so are most of the community organizations you work with. Projects that improve the business district, fund a community event, or build shared infrastructure can go through one of those.</p>
+        <p>One warning worth having. Demand for county betterment grants has tripled in recent years, and the county saw its highest volume of declined requests in at least fifteen years. Assume it is competitive and apply early.</p>
+        <p>If you have a project idea that would help Polk City businesses generally, bring it to the chamber before the December window opens. Putting it together takes longer than people think.</p>`,
+    },
+    sources: [
+      { label: 'Prairie Meadows grant programs and deadlines', publisher: 'Prairie Meadows', url: 'https://www.prairiemeadows.com/' },
+      { label: 'Polk County community grants', publisher: 'Polk County', url: 'https://communitygrants.polkcountyiowa.gov/' },
+      { label: 'Reporting on rising demand for county grants', publisher: 'Axios Des Moines', url: 'https://www.axios.com/local/des-moines/2025/06/24/polk-county-grant-rules-demand-triples' },
+    ],
+  },
+
+  {
+    id: 'grants-where-to-look',
+    group: 'money',
+    topics: ['money'],
+    title: 'Where to look for everything else',
+    meta: 'Two official listings, plus one common trap',
+    plain: 'IowaGrants.gov lists every state grant. Grants.gov lists every federal one. And no, most USDA rural programs will not work here, for a reason worth understanding.',
+    body: `
+      <p><strong>IowaGrants.gov</strong> is the state's official listing of open grant opportunities. Anyone can browse it. Search by agency or keyword.</p>
+      <p><strong>Grants.gov</strong> is the federal equivalent.</p>
+      <p><strong>The USDA rural trap.</strong> People see that Polk City has about 6,500 residents and assume USDA rural business programs apply. Two problems. First, most of those programs only accept applications from a city, county, tribe, or nonprofit, not from the business itself. Second, and more important, eligibility is not just about your town's population. Money has to go to areas outside the built-up edge of any city of 50,000 or more. Polk City sits right against Ankeny, which passed 77,000 people. Check the USDA eligibility map for your specific address before you invest any time.</p>`,
+    matters: {
+      heading: 'A word on grant scams',
+      html: `
+        <p>If a company emails or calls offering to get you a business grant for a fee, it is a scam. Real government grants never require an upfront payment to apply, and no one can guarantee you an award.</p>
+        <p>Every legitimate program on this page is listed on a .gov site and free to apply for. If you are not sure, call the SBDC before you send anyone money.</p>`,
+    },
+    sources: [
+      { label: 'State of Iowa grant listings', publisher: 'IowaGrants.gov', url: 'https://www.iowagrants.gov/' },
+      { label: 'Federal grant listings', publisher: 'Grants.gov', url: 'https://www.grants.gov/' },
+      { label: 'Rural Business Development Grant rules', publisher: 'USDA Rural Development', url: 'https://www.rd.usda.gov/programs-services/business-programs/rural-business-development-grants' },
+    ],
+  },
+
+  {
     id: 'income-tax-amendment-sjr11',
     group: 'ballot',
     topics: ['tax', 'elections'],
@@ -404,6 +611,62 @@ const ENTRIES = [
       { label: 'District maps for Polk County', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/election-maps/' },
       { label: '3rd District race overview', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Iowa%27s_3rd_Congressional_District_election,_2026' },
       { label: 'How analysts rate the 3rd District race', publisher: 'Cook Political Report', url: 'https://www.cookpolitical.com/house/race/483096' },
+    ],
+  },
+
+  {
+    id: 'state-legislature-races',
+    group: 'ballot',
+    topics: ['elections', 'tax'],
+    title: 'Your state representative is on the ballot, and this is the race that matters most locally',
+    meta: 'All 100 Iowa House seats. Half the Iowa Senate.',
+    plain: 'Everyone in Iowa votes for a state representative this year. These are the people who wrote the property tax law and who will decide the bills coming back in January.',
+    body: `
+      <p>Every one of the 100 seats in the Iowa House is up on November 3, for a two-year term. Iowa Senate seats run on four-year terms, staggered, so about half the Senate is also on the ballot depending on where you live.</p>
+      <p>These are the offices that produced everything in the New Laws section above. They are also the ones who will take up right to repair, energy costs, and penny rounding when the session opens in January.</p>`,
+    matters: {
+      heading: 'Why the chamber cares more about this than the top of the ticket',
+      html: `
+        <p>A governor's race gets the attention. But your state representative is the person who returns a phone call from a Polk City business owner, and there are only a handful of them covering our area.</p>
+        <p>These races are also small enough that showing up matters. A few dozen engaged business owners is a meaningful bloc in a state House district. That is the whole argument for the chamber building an advocacy voice.</p>
+        <p>Use the lookup tools at the top of this page to find out exactly who represents your address and who is challenging them. Then, whichever way you lean, introduce yourself before the session starts.</p>`,
+    },
+    sources: [
+      { label: 'Find your legislators by address', publisher: 'Iowa Legislature', url: 'https://www.legis.iowa.gov/legislators/find' },
+      { label: 'District maps for Polk County', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/election-maps/' },
+      { label: 'Look up your full sample ballot', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
+    ],
+  },
+
+  {
+    id: 'county-township-local-races',
+    group: 'ballot',
+    topics: ['elections'],
+    title: 'County, township, and the local offices nobody reads about',
+    meta: 'Also on the November 3 ballot',
+    plain: 'This is not just a federal election. County and township officers are on the same ballot, plus some boards you have probably never voted for on purpose. Pull your sample ballot before you go.',
+    body: `
+      <p>Iowa holds its general election in even-numbered years to elect federal, state, county, and township officers. Constitutional amendments and public measures for cities and counties can appear on the same ballot.</p>
+      <p><strong>What may be on yours, depending on your address:</strong></p>
+      <ul>
+        <li><strong>Polk County offices.</strong> These run on staggered terms, so which ones appear depends on the year and on which supervisor district you are in.</li>
+        <li><strong>Township officers.</strong> Polk City sits in a township, and township trustees and clerks are elected on this ballot.</li>
+        <li><strong>Three nonpartisan countywide boards.</strong> Hospital Board of Trustees, Soil and Water Conservation Board, and Agricultural Extension Council.</li>
+        <li><strong>Judicial retention.</strong> Yes or no votes on whether sitting judges keep their seats. No opponents, just keep or do not keep.</li>
+        <li><strong>Local public measures.</strong> Cities and counties can put bond issues or other questions on this ballot. Check yours.</li>
+      </ul>
+      <p>City council and school board seats are not on this ballot. Iowa moved those to odd-numbered years, so the next ones are in November 2027.</p>`,
+    matters: {
+      heading: 'The two-minute version',
+      html: `
+        <p>County government sets your county property tax levy and runs the CDBG program mentioned elsewhere on this page. The Board of Supervisors also decides Polk County's community grant awards. Those decisions reach local businesses more directly than most people realize.</p>
+        <p>The single most useful thing you can do is pull your sample ballot a week early and look up anything you do not recognize. The bottom of a ballot is where most people give up, and those are usually the races decided by the fewest votes.</p>
+        <p><strong>Chamber note:</strong> we are confirming with the Polk County Auditor exactly which county and legislative districts cover Polk City addresses, and will list the specific races here once that is verified. We would rather leave a gap than print the wrong name.</p>`,
+    },
+    sources: [
+      { label: 'What the general election covers and who is running', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/news-and-press-releases/general-election-november-3-2026-candidate-information/' },
+      { label: 'Sample ballot lookup by address', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
+      { label: 'Election dates, early voting, and absentee', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/' },
     ],
   },
 
