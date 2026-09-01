@@ -978,6 +978,7 @@ const ENTRIES = [
     id: 'county-township-local-races',
     group: 'ballot',
     added: '2026-09-01',
+    updated: '2026-09-01',
     topics: ['elections'],
     title: 'County offices, township officers, and judges',
     meta: 'Also on the November 3 ballot',
@@ -994,7 +995,7 @@ const ENTRIES = [
       <h4>Countywide offices, on every Polk County ballot</h4>
       <ul>
         <li><strong>County Attorney.</strong> Kimberly Graham is the Democratic candidate.</li>
-        <li><strong>County Recorder.</strong> An open seat. Longtime recorder Julie Haggerty is not seeking reelection.</li>
+        <li><strong>County Recorder.</strong> An open seat, since longtime recorder Julie Haggerty is retiring. Lisa J. Chiodo won the June 2 Democratic primary with 54% over Luisita McBurney. A third candidate, Tiara May-Sims, withdrew but still appeared on the ballot. The recorder keeps permanent public records: birth, death and marriage certificates, and real estate documents.</li>
         <li><strong>County Treasurer.</strong> Mary Wells is the Democratic candidate.</li>
       </ul>
       <p>Several of these had no Republican file, so some may be effectively decided already. Your sample ballot will show who actually appears.</p>
@@ -1016,6 +1017,7 @@ const ENTRIES = [
     },
     sources: [
       { label: 'Who is running for Polk County offices', publisher: 'Des Moines Register', url: 'https://www.aol.com/articles/running-polk-county-elections-2026-110146287.html' },
+      { label: 'Official Polk County election results', publisher: 'Polk County Auditor', url: 'https://polkelectionia.gov/ElectionNight' },
       { label: 'What the general election covers', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/news-and-press-releases/general-election-november-3-2026-candidate-information/' },
       { label: 'Sample ballot lookup by address', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
       { label: 'Election dates, early voting, and absentee', publisher: 'Polk County Auditor', url: 'https://www.polkcountyiowa.gov/county-auditor/election/' },
