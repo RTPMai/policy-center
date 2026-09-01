@@ -6,7 +6,8 @@
 | `index.html` | The page skeleton | Rarely |
 | `styles.css` | Colors, type, layout | Only to change the look |
 | `app.js` | Sections, search, share links | No |
-| `assets/` | The three chamber logos | No |
+| `assets/` | The chamber logos and the social share card | No |
+| `robots.txt`, `sitemap.xml` | Tell search engines the site exists | Once, if the domain changes |
 
 ### How the page is organised
 
@@ -87,23 +88,47 @@ Two options, and you can do both.
 
 ### What to change each month
 
-**Always change the date.** Near the top of `content.js`:
+**Always move the two dates.** Near the top of `content.js`:
 
 ```js
 reviewedOn: 'September 1, 2026',
+reviewedOnISO: '2026-09-01',
+
+previousReviewISO: '',
+previousReviewLabel: '',
 ```
+
+Each time you review, copy the old `reviewedOnISO` into `previousReviewISO`, copy the old `reviewedOn` into `previousReviewLabel`, then set the two `reviewedOn` fields to today.
+
+That one step is what makes the site show a green **New** badge on anything added since last time, an **Updated** badge on anything you rewrote, a "What changed" list on the home page, and a counter in the menu. Members who visited last month can see what is different in ten seconds instead of rereading everything.
+
+On the very first launch, leave both previous fields empty. Everything is new, so badging all of it would just be noise.
 
 A stale date on a page like this does more damage than no page at all. If you did not actually review it, do not change the date. But do not leave a three month old date sitting there either.
 
-**Add a new entry.** Copy the template in the comment block above the `ENTRIES` list, fill it in, and paste it into the list. New entries go at the top of their section.
+**Add a new entry.** Copy the template in the comment block above the `ENTRIES` list, fill it in, and paste it into the list. New entries go at the top of their section. Set `added` to today's date in `2026-10-01` form.
+
+**Rewrote an existing entry?** Add `updated: '2026-10-01'` to it. Leave `added` alone.
 
 **Write the `plain` line carefully.** That one sentence is what shows on the closed card, before anyone clicks. For most readers it is the only thing they will read. Write it the way you would explain it to a member across the counter. No bill numbers, no jargon, just what changed and whether they should care.
 
-**Add any hard words to the glossary.** If you have to use a term like TIF or rollback, add it to the `GLOSSARY` list in the same file. It renders near the bottom of the page automatically.
+**Add any hard words to the glossary.** If you have to use a term like TIF or rollback, add it to the `GLOSSARY` list in the same file. It renders on the Words and Sources page automatically.
 
-**Retire an old entry.** Delete it, or move it down. Anything more than a year old and no longer live should come off.
+**Retiring an old entry? Archive it, never delete it.** Add `archived: true`. See the note in `content.js` for why this matters.
 
 **Rewrite the "what this means" paragraphs.** Do not just copy them forward. That plain language explanation is the whole point of the page. The raw facts are on any news site.
+
+### Put November 4 on the calendar right now
+
+The Ballot section has an expiry date built into it:
+
+```js
+expires: '2026-11-03',
+```
+
+From November 4 onward, the site automatically shows an "Out of date" badge on the home page card, a warning dot in the menu, and a red banner across the top of the section. That stops anyone reading finished races as current information, but it is a safety net, not a fix.
+
+Someone needs to actually rewrite that section with the results and what they mean for local business. Ideally within a week. When you do, delete the `expires` and `expiredNote` lines and change the `badge`.
 
 ### The three rules
 
@@ -139,7 +164,9 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 **Apostrophes.** Inside backticks (`` ` ``) apostrophes are fine. Inside single quotes they are not. Write `'the city\'s plan'` or switch that value to double quotes.
 
-**The logos do not show up.** Check that the `assets` folder made it into the repository with all three SVG files inside. On GitHub, the folder should appear in the file list next to `index.html`.
+**The logos do not show up.** Check that the `assets` folder made it into the repository with all four files inside, three SVGs and one PNG. On GitHub, the folder should appear in the file list next to `index.html`.
+
+**Shared links show no picture on Facebook or LinkedIn.** The share card lives at `assets/social-card.png` and the address is written into `index.html` as `https://polkcitychamber.com/assets/social-card.png`. If the site ends up on a different domain, update those four lines or the picture will not load. Social platforms cache aggressively, so use Facebook's Sharing Debugger to force a refresh after a change.
 
 **Fonts look plain.** The page loads Fraunces and Public Sans from Google Fonts. If those are blocked it falls back to Georgia and a system sans. Everything still works, it just looks plainer.
 
@@ -165,6 +192,12 @@ Grant deadlines and award amounts change annually. Treat that section as the sho
 Two things it deliberately tells members that most grant lists do not. First, which programs are closed to for-profit businesses, so nobody wastes a week on an application they were never eligible for. Second, that anyone charging a fee to get you a government grant is running a scam. Both of those are worth keeping in as you edit.
 
 ---
+
+## Two things to switch on after launch
+
+**Analytics.** `index.html` already loads Vercel's privacy-friendly analytics. To turn it on, open your project on Vercel, go to the Analytics tab, and click Enable. No cookies, no personal data. This is also the evidence base for the impact reporting the chamber has discussed, so it is worth having running early.
+
+**Google Search Console.** Add the site, then submit `sitemap.xml`. One honest limitation: because section addresses use a `#`, search engines only ever see the home page. Someone searching for "Polk City chamber property tax" will not land on that entry. Fixing that properly means rebuilding the addressing without hashes, which is a bigger job. Until then, treat social posts and email as the way people find specific items, and search engines as the way they find the site at all.
 
 ## A note on neutrality
 
