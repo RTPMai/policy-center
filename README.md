@@ -11,10 +11,10 @@
 
 ### How the page is organised
 
-It is one file, but it behaves like five pages. Members land on a home screen with four cards and pick where to go, instead of scrolling a wall of text.
+It is one file, but it behaves like five pages. Members land on a home screen with five cards and pick where to go, instead of scrolling a wall of text.
 
 - **Home** shows the four section cards and the quick answer tools.
-- **Grants**, **Ballot**, **New laws**, and **Polk City** are the four sections. Each is its own screen.
+- **Grants**, **Ballot**, **Taxes**, **New laws**, and **Polk City** are the five sections. Each is its own screen.
 - **Words and sources** holds the glossary and the source list.
 - **Search** works across every section at once, from any screen.
 
@@ -28,6 +28,7 @@ Every color on the site comes out of the chamber logo, and each section is tied 
 | --- | --- | --- |
 | Grants | Summer sun | `#F19C30` |
 | Ballot | Winter | `#68A1B8` |
+| Taxes | Wordmark navy | `#002734` |
 | New laws | Spring leaf | `#838E52` |
 | Polk City | Autumn leaf | `#A36437` |
 
@@ -180,7 +181,7 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 - [ ] While you have them on the phone, confirm the Polk County Recorder nominee. That was a three-way Democratic primary and the entry does not name a winner.
 - [ ] Spot check three or four of the grant programs against their source links. Deadlines and dollar amounts move every year and these were accurate as of the review date only.
 - [ ] Confirm whether Polk City is a designated Main Street Iowa community. If it is, add the Open 4 Business grant, which runs $5,000 to $25,000 for businesses in designated districts.
-- [ ] Open the site on a phone and walk all four sections. That is how most members will see it.
+- [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
 - [ ] Decide who owns the monthly review, by name, and put it on a calendar.
 - [ ] Confirm the board is comfortable with the "Where the chamber stands on politics" statement in `index.html`.
@@ -198,6 +199,16 @@ Two things it deliberately tells members that most grant lists do not. First, wh
 **Analytics.** `index.html` already loads Vercel's privacy-friendly analytics. To turn it on, open your project on Vercel, go to the Analytics tab, and click Enable. No cookies, no personal data. This is also the evidence base for the impact reporting the chamber has discussed, so it is worth having running early.
 
 **Google Search Console.** Add the site, then submit `sitemap.xml`. One honest limitation: because section addresses use a `#`, search engines only ever see the home page. Someone searching for "Polk City chamber property tax" will not land on that entry. Fixing that properly means rebuilding the addressing without hashes, which is a bigger job. Until then, treat social posts and email as the way people find specific items, and search engines as the way they find the site at all.
+
+## A hard rule about the Taxes section
+
+Never let that section drift into advice. It describes what changed and names the provisions to ask a professional about. It does not tell anyone what to deduct, and it must not start to.
+
+Two reasons. A member who acts on wrong guidance from the chamber gets hurt and the chamber is the reason. And tax outcomes depend on entity type, income, and specifics nobody writing a web page can know.
+
+If a member asks the office a specific tax question, the answer is a referral, not an answer.
+
+While researching that section we found accounting firm blog posts contradicting each other on basic figures for the same tax year, some apparently describing repealed law. That is why the entries carry very few dollar amounts and point at IRS pages instead. Keep it that way when you update them.
 
 ## A note on neutrality
 
