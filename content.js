@@ -932,39 +932,44 @@ const ENTRIES = [
     id: 'state-legislature-races',
     group: 'ballot',
     added: '2026-09-01',
+    updated: '2026-09-01',
     topics: ['elections', 'tax'],
-    title: 'Your state senate seat is open for the first time in 15 years',
-    meta: 'Polk City is in House District 45 and Senate District 23',
-    plain: 'Jack Whitver retired, so the senate seat covering Polk City is wide open. Your state rep, Brian Lohse, is also on the ballot. These two races matter more to local business than anything else you will vote on.',
+    title: 'Polk City gets a brand new state senator and a brand new state representative',
+    meta: 'Senate District 23 and House District 45, no incumbent in either',
+    plain: 'Both seats are open. Jack Whitver retired, and four-term Rep. Brian Lohse lost his June primary. Whoever wins in November will be new to the job, and new to us.',
     body: `
-      <p>Polk City sits in <strong>Iowa Senate District 23</strong> and <strong>Iowa House District 45</strong>. Both are on the November 3 ballot.</p>
+      <p>Polk City sits in <strong>Iowa Senate District 23</strong> and <strong>Iowa House District 45</strong>. Something unusual happened this year. Neither race has an incumbent on the November ballot.</p>
 
-      <h4>Senate District 23, an open seat</h4>
+      <h4>Senate District 23</h4>
       <p>The district covers rural northern Polk County plus parts of eastern Polk and eastern Dallas counties, including Polk City, Alleman, Elkhart, Granger, Runnells, and parts of Grimes and Urbandale.</p>
-      <p>Jack Whitver of Grimes held this seat and served as Senate Majority Leader from 2018. In September 2025 he announced he would not run again and stepped down as leader, citing ongoing treatment following a brain tumor diagnosis in 2024. That leaves the seat open.</p>
+      <p>Jack Whitver of Grimes held the seat and served as Senate Majority Leader from 2018. He announced in September 2025 that he would not run again, citing ongoing treatment following a brain tumor diagnosis. In the June 2 Republican primary, Wes Enos defeated Mike Bousselot, a sitting senator from Ankeny who had moved over to run here with Whitver's backing.</p>
       <ul>
+        <li><strong>Wes Enos (Republican)</strong> of Bondurant.</li>
         <li><strong>Tony Thompson (Democrat)</strong>, a farmer and business owner from Elkhart. He was unopposed in the primary.</li>
-        <li><strong>Republican side.</strong> Two candidates ran in the June 2 primary. Mike Bousselot, currently the state senator for District 21 in Ankeny, who moved over to run here with Whitver's backing. And Wes Enos of Bondurant. Check your sample ballot for the nominee.</li>
       </ul>
 
       <h4>House District 45</h4>
-      <p>The district includes Polk City, Alleman, Elkhart, Bondurant, Runnells, Carlisle and nearby communities.</p>
+      <p>The district includes Polk City, Bondurant, Mitchellville, part of Carlisle and nearby communities.</p>
+      <p>Brian Lohse of Bondurant had held the seat since 2019 and was running for a fifth term. He lost the June 2 Republican primary to Austin Stubbs by roughly 75% to 25%. Stubbs was backed by Americans for Prosperity Iowa.</p>
       <ul>
-        <li><strong>Brian Lohse (Republican)</strong>, the incumbent, of Bondurant. He has served since 2019 and spent eight years on the Bondurant city council before that. He is an attorney who also owns a restaurant, a fitness facility, and rental property. Austin Stubbs of Bondurant also ran in the June 2 Republican primary, so confirm the nominee on your sample ballot.</li>
+        <li><strong>Austin Stubbs (Republican)</strong> of Bondurant.</li>
         <li><strong>Kendra Haug (Democrat)</strong> of Bondurant. She was unopposed in the primary.</li>
-      </ul>`,
+      </ul>
+      <p>The Des Moines Register sent questionnaires to candidates in these races covering taxes, education, eminent domain and the state budget. That is the best place to compare them in their own words, and it is linked below.</p>`,
     matters: {
-      heading: 'Why the chamber watches these two races hardest',
+      heading: 'Why this is the most important thing on this page for the chamber',
       html: `
-        <p>Everything in the New Laws section came out of these two chambers. The property tax cap, the TIF changes, the child care program. So will right to repair and the energy bill when the session opens in January.</p>
-        <p>An open senate seat is a rare opening. Whoever wins arrives with no established relationships and no fixed positions on local issues. A chamber that shows up early gets heard. One that waits until February does not.</p>
-        <p>These races are also small enough that a few dozen business owners is a real bloc. That is not true of a governor's race. It is very true here.</p>
-        <p>Worth noting for anyone deciding whether this is worth their time: the current representative runs a restaurant and rental property himself, and the Democratic senate candidate is a farmer and business owner. These are people who will understand a conversation about input costs and staffing.</p>`,
+        <p>Come January, nobody representing Polk City at the Statehouse will have held the job before. That has not happened here in a long time.</p>
+        <p>Everything in the New Laws section came out of these two chambers. The property tax cap, the TIF limits that make commercial development harder to finance, the child care program. Right to repair and the energy bill come back in January. All of it gets decided by people who, as of today, have no record on how any of it affects a business in Polk City.</p>
+        <p>That cuts both ways. There is no established relationship to lean on. There is also no fixed position to argue against. A new legislator's first year is when they are most open to hearing from constituents, and both winners will be looking for local footing.</p>
+        <p>Worth noting: all four candidates are from Bondurant or Elkhart. None are from Polk City. Nobody arrives already knowing our commercial development problem or our 90 to 10 tax base. Someone has to tell them, early.</p>
+        <p>That is the argument for the chamber having an advocacy function at all. If we wait until February, the session is already moving and positions are set.</p>`,
     },
     sources: [
+      { label: 'Candidate questionnaires for House District 45', publisher: 'Des Moines Register', url: 'https://bluewaterhealthyliving.com/news/national-news/iowa/meet-the-candidates-for-iowa-house-district-45-in-polk-county/' },
+      { label: 'Three Iowa House incumbents lost their primaries', publisher: 'Iowa Capital Dispatch', url: 'https://iowacapitaldispatch.com/briefs/three-iowa-house-incumbents-lose-primary-elections/' },
       { label: 'Official list of everyone who filed to run', publisher: 'Iowa Secretary of State', url: 'https://sos.iowa.gov/sites/default/files/2026-04/2026%20Primary%20-%20Candidate%20List%20Database%20-%20All%20Elections_1.pdf' },
       { label: 'Find your legislators by address', publisher: 'Iowa Legislature', url: 'https://www.legis.iowa.gov/legislators/find' },
-      { label: 'Why the senate seat came open', publisher: 'Iowa Capital Dispatch', url: 'https://iowacapitaldispatch.com/2025/09/16/iowa-senate-majority-leader-jack-whitver-announces-retirement-will-not-seek-reelection/' },
       { label: 'Look up your full sample ballot', publisher: 'Ballotpedia', url: 'https://ballotpedia.org/Polk_County_Sample_Ballot_(Iowa)' },
     ],
   },
