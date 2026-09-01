@@ -673,29 +673,34 @@ const ENTRIES = [
     id: 'grants-training-staff',
     group: 'money',
     added: '2026-09-01',
+    updated: '2026-09-01',
     referrals: 'hr',
     topics: ['money', 'workforce'],
     title: 'Money to train the people you already have',
     meta: 'Iowa Workforce Development and IEDA. Ongoing.',
-    plain: 'The state helps pay to train your current employees, run a paid internship, or start an apprenticeship. This is the most overlooked money on this page.',
+    plain: 'Manufacturers can get 80% of training costs reimbursed through a new program open right now. Other programs cover internships, apprenticeships and training your existing staff. This is the most overlooked money on this page.',
     body: `
-      <p>Several state programs help cover the cost of building up your workforce.</p>
+      <p><strong>Open right now: AMP'D Iowa.</strong> Advanced Manufacturing Pathways Development is a new program that opened June 29, 2026, funded by a $4.7 million federal grant. Eligible manufacturers get reimbursed for <strong>up to 80% of training costs</strong>, capped at $4,000 per employee and $250,000 per employer. It covers both new hires and people already on your payroll. You need a manufacturing classification and an Iowa location, and priority goes to small and medium employers. Applications are on IowaGrants.gov.</p>
+      <p>Several longer-running programs help with the same problem.</p>
       <ul>
         <li><strong>Iowa Jobs Training Program, known as 260F.</strong> Helps pay to train employees you already have. Runs through the community colleges, which for us means DMACC.</li>
         <li><strong>Registered Apprenticeship.</strong> Training grants covering more than 1,000 occupations, administered by Iowa Workforce Development. Not just the building trades.</li>
         <li><strong>Student Internship Program.</strong> Grants to small and medium companies in targeted industries to run paid internships.</li>
         <li><strong>STEM Internship Program.</strong> Same idea, for science, technology, engineering, and math roles.</li>
         <li><strong>Community College Consortium, known as 260.</strong> For training projects where two or more businesses go in together.</li>
+        <li><strong>Child care grants for employers.</strong> Iowa Workforce Development runs grants for projects that help employers expand child care options for their workers. Worth a look given how tight local capacity is.</li>
       </ul>`,
     matters: {
       heading: 'Why this fits Polk City',
       html: `
-        <p>Most Polk City businesses are too small to run a training budget. These programs are built for exactly that situation, and they apply to people already on your payroll rather than new hires.</p>
+        <p>Most Polk City businesses are too small to run a training budget. These programs are built for exactly that situation, and most apply to people already on your payroll, not just new hires.</p>
+        <p>If you are a manufacturer, look at AMP'D first. An 80% reimbursement is a better deal than almost anything else on this page, and it is open now rather than on a future window.</p>
         <p>The consortium option is worth a look for the chamber itself. If several members need similar training, going in together may unlock money none of you could get alone. Tell the chamber if that interests you.</p>`,
     },
     sources: [
+      { label: "AMP'D Iowa rules and eligibility", publisher: 'Iowa Workforce Development', url: 'https://workforce.iowa.gov/opportunities/grants/ampd' },
+      { label: 'All Iowa Workforce Development grants', publisher: 'Iowa Workforce Development', url: 'https://workforce.iowa.gov/opportunities/grants' },
       { label: 'Training and workforce funding programs', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/financial-assistance' },
-      { label: 'Apprenticeship programs', publisher: 'Iowa Workforce Development', url: 'https://www.iowaworkforcedevelopment.gov/' },
     ],
   },
 
@@ -767,12 +772,15 @@ const ENTRIES = [
     id: 'grants-manufacturers-and-startups',
     group: 'money',
     added: '2026-09-01',
+    updated: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Manufacturers, inventors, and anyone selling outside Iowa',
     meta: 'CIRAS, IEDA Innovation Continuum, and STEP',
     plain: 'Equipment grants up to $50,000 for manufacturers, up to $75,000 for federal research applications, and reimbursement for the cost of finding customers in other states or countries.',
     body: `
-      <p><strong>Smart manufacturing grants.</strong> For small and mid-sized manufacturers adopting new technology. Equipment grants cover up to $50,000, and connected-technology infrastructure up to $25,000. Open to manufacturers with roughly 3 to 124 full-time employees. You need a CIRAS assessment first, and CIRAS is at Iowa State.</p>
+      <p><strong>Manufacturing 4.0 Technology Investment Program.</strong> Equipment grants up to $50,000, and connected-technology infrastructure grants up to $25,000. You can apply for both, but $75,000 is the lifetime maximum for a business.</p>
+      <p>The conditions are specific. You need a <strong>1 to 1 cash match</strong>, from a private source. In-kind does not count. You need 3 to 124 full-time employees across all locations, at least 51% of revenue from selling manufactured goods, at least three years in operation, and good standing with the Iowa Department of Revenue. Failure on that last one is an automatic denial.</p>
+      <p><strong>The timing trap on this one is brutal.</strong> A CIRAS assessment from Iowa State is required and must be submitted with the application. But the window to <em>request</em> the assessment closes months before applications open. For the round that opened January 5, the assessment request window had already closed on November 21. If you wait until you see applications open, you have missed it by six weeks. Ask CIRAS about the assessment in the fall.</p>
       <p><strong>America's Seed Fund support.</strong> If you are going after a federal SBIR or STTR research grant, Iowa will put in up to $75,000. That is $50,000 once you win a phase one award and another $25,000 when you submit a phase two proposal.</p>
       <p><strong>The Iowa Innovation Continuum.</strong> Five state-backed funds that invest in Iowa companies through loans or royalty agreements rather than plain grants. These are for technology and high growth businesses, not Main Street retail.</p>
       <p><strong>STEP export grant.</strong> Reimburses eligible small businesses for the cost of expanding into markets outside Iowa.</p>`,
@@ -780,11 +788,12 @@ const ENTRIES = [
       heading: 'Be honest about whether this is you',
       html: `
         <p>Most of these are not for a retail shop or a service business. They are for manufacturers, product companies, and technology startups.</p>
-        <p>The manufacturing grants are the most likely fit for a Polk City area member. If you make something in a building with equipment in it, the CIRAS assessment is free and worth the call regardless of whether you apply.</p>`,
+        <p>The manufacturing grants are the most likely fit for a Polk City area member. If you make something in a building with equipment in it, the CIRAS assessment is worth the call regardless of whether you apply, and the call needs to happen in autumn.</p>`,
     },
     sources: [
+      { label: 'Manufacturing 4.0 rules, match and deadlines', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/financial-assistance/manufacturing-40-technology-investment' },
       { label: 'Grants and funding programs', publisher: 'Opportunity Iowa', url: 'https://opportunityiowa.gov/business/financial-assistance/grants-funding' },
-      { label: 'Manufacturing assessments and assistance', publisher: 'Iowa State University Extension', url: 'https://www.extension.iastate.edu/program/community-and-leadership' },
+      { label: 'Where these applications are filed', publisher: 'IowaGrants.gov', url: 'https://www.iowagrants.gov/' },
     ],
   },
 
