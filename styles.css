@@ -368,6 +368,19 @@ details.entry[open] .chev{ transform:rotate(180deg); }
 .matters p{ margin:0 0 11px; }
 .matters p:last-child{ margin-bottom:0; }
 
+.referrals{
+  margin:18px 0 0; padding:17px 20px;
+  background:var(--paper); border:1px solid var(--rule);
+  border-left:3px solid var(--tint); border-radius:0 8px 8px 0;
+  max-width:var(--measure);
+}
+.referrals h4{ font-family:"Fraunces",Georgia,serif; font-size:1rem; font-weight:600; margin:0 0 10px; }
+.referrals ul{ list-style:none; padding:0; margin:0 0 12px; }
+.referrals li{ margin-bottom:6px; font-size:0.96rem; }
+.referrals a{ font-weight:600; color:var(--tint-ink); }
+.ref-phone{ color:var(--navy-soft); font-size:0.88rem; margin-left:6px; }
+.ref-note{ margin:0 !important; font-size:0.83rem; color:var(--navy-soft); line-height:1.45; }
+
 .sources{ margin:17px 0 0; padding-top:14px; border-top:1px solid var(--rule-soft); }
 .sources h4{ font-size:0.81rem; font-weight:700; color:var(--navy-soft); margin:0 0 8px; }
 .sources ul{ list-style:none; padding:0; margin:0; max-width:var(--measure); }
