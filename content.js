@@ -249,13 +249,40 @@ const GLOSSARY = [
    ========================================================================== */
 
 const MEMBER_REFERRALS = {
+  /* No accountants or CPAs are chamber members as of the September 2026
+     review. Every listing in the directory was checked. The three financial
+     services members do wealth management and insurance, not tax
+     preparation, so listing them here would send people to the wrong kind
+     of professional.
+
+     Leave this empty until an accounting firm joins. Then add them here and
+     the block appears automatically. */
   accounting: {
     heading: 'Chamber members who do this work',
-    /* Add members here as { name, url, phone }. url and phone are optional.
-       Example:
-         { name: 'Example Accounting', url: 'https://example.com', phone: '515-555-0100' },
-    */
     members: [],
+  },
+
+  banking: {
+    heading: 'Chamber member banks',
+    members: [
+      { name: 'Grinnell State Bank', url: 'https://www.grinnell.bank', phone: '515-984-6211' },
+      { name: 'Home State Bank', url: 'https://www.hsbankiowa.com', phone: '515-329-8801' },
+      { name: 'Luana Savings Bank', url: 'https://www.luanasavingsbank.com', phone: '515-984-7100' },
+    ],
+  },
+
+  hr: {
+    heading: 'Chamber members who do this work',
+    members: [
+      { name: 'HR Approach', phone: '515-208-0190' },
+    ],
+  },
+
+  childcare: {
+    heading: 'Chamber member child care providers',
+    members: [
+      { name: 'Yellow Brick Road Early Childhood Development Center', url: 'https://www.ybrecdc.org', phone: '515-984-6147' },
+    ],
   },
 };
 
@@ -427,7 +454,7 @@ const ENTRIES = [
       <p>To be direct about it: the chamber cannot tell you what to deduct or how to file. The rules turn on your entity type, your income, and details of your situation that we do not know. Getting that wrong hurts you and it would hurt the chamber's credibility.</p>
       <p>What we can do is point you at people who can.</p>
       <ul>
-        <li><strong>A CPA or enrolled agent.</strong> If you do not have one, ask other members. This is one of the most useful referrals the chamber can make.</li>
+        <li><strong>A CPA or enrolled agent.</strong> No accounting firm is currently a chamber member, so we cannot point you at one of our own. Ask other members who they use. That word of mouth is worth more than a directory listing anyway.</li>
         <li><strong>America's SBDC Iowa.</strong> Free one on one counseling, including financial and recordkeeping questions. They will not file your return, but they will help you understand your books.</li>
         <li><strong>The Iowa Center.</strong> Coaching and lending for owners who have trouble with conventional bank financing.</li>
         <li><strong>SCORE.</strong> Free mentoring from working and retired executives.</li>
@@ -524,6 +551,7 @@ const ENTRIES = [
     id: 'child-care-hf2514',
     group: 'law',
     added: '2026-09-01',
+    referrals: 'childcare',
     topics: ['workforce'],
     title: 'Child care workers can now get child care help, permanently',
     meta: 'House File 2514, effective July 1, 2026',
@@ -605,6 +633,7 @@ const ENTRIES = [
     id: 'grants-start-here',
     group: 'money',
     added: '2026-09-01',
+    referrals: 'banking',
     topics: ['money'],
     title: 'Start here before you chase any grant',
     meta: 'Free help, no cost to you',
@@ -635,6 +664,7 @@ const ENTRIES = [
     id: 'grants-training-staff',
     group: 'money',
     added: '2026-09-01',
+    referrals: 'hr',
     topics: ['money', 'workforce'],
     title: 'Money to train the people you already have',
     meta: 'Iowa Workforce Development and IEDA. Ongoing.',
