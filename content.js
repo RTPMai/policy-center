@@ -33,6 +33,18 @@ const SITE = {
   intro:
     'New laws, the November ballot, and local decisions that affect businesses here. Each one is explained in plain language, with links so you can check it yourself.',
   reviewedOn: 'September 1, 2026',
+  reviewedOnISO: '2026-09-01',
+
+  /* Set this to whatever reviewedOnISO used to be, each time you review.
+     Anything added or updated after this date gets a "New" or "Updated"
+     badge and shows in the What's new list on the home page.
+     Leave it empty on the very first launch, when everything is new. */
+  previousReviewISO: '',
+
+  /* The same date written the way a person reads it. Shows up as
+     "What changed since August 1, 2026" on the home page. */
+  previousReviewLabel: '',
+
   cadence: 'Reviewed monthly',
   contactEmail: 'admin@polkcitychamber.com',
   chamberUrl: 'https://polkcitychamber.com',
@@ -111,6 +123,14 @@ const GROUPS = [
     nav: 'Ballot',
     season: 'winter',
     badge: 'November 3',
+
+    /* This whole section goes out of date the day after the election.
+       After this date the site shows a warning on the section and on the
+       home page card, so nobody reads stale race information as current.
+       When you rewrite the section for results, clear both of these. */
+    expires: '2026-11-03',
+    expiredNote: 'The election has happened. The races described below are finished and the information here is out of date. We are rewriting this section with the results and what they mean for local business.',
+
     title: 'On the ballot November 3',
     blurb: 'Federal, state, county, and township offices are all on this ballot, plus a statewide question about taxes.',
     lede: 'This is a big ballot. The chamber does not tell you who to vote for. These entries explain what each choice decides, and give the argument on both sides.',
@@ -189,7 +209,10 @@ const GLOSSARY = [
 
    {
      id: 'short-unique-name',
-     group: 'law',                 // law, ballot, or local
+     group: 'law',                 // law, money, ballot, or local
+     added: '2026-09-01',          // the date you added it. Drives the New badge.
+     updated: '2026-10-01',        // optional. Only when you rewrite an existing item.
+     archived: false,              // optional. See ARCHIVING below.
      topics: ['tax'],              // one or more topic ids
      title: 'Headline in plain words',
      meta: 'Bill number, date, status',
@@ -203,12 +226,28 @@ const GLOSSARY = [
        { label: 'What the link says', publisher: 'Who published it', url: 'https://...' },
      ],
    },
+
+   ARCHIVING, AND WHY YOU SHOULD NEVER DELETE AN ENTRY
+
+   Once you have shared a link to an entry on Facebook or in an email, that
+   link needs to keep working forever. Deleting the entry breaks it, exactly
+   the same way renaming the id would.
+
+   So when something is no longer current, do not delete it. Add:
+
+       archived: true,
+
+   The entry then disappears from its section, from the counts, and from
+   search, but the link still works. Anyone who follows an old link sees the
+   item with a clear notice that it is no longer current. Archived items are
+   also listed together on the Words and Sources page.
    ========================================================================== */
 
 const ENTRIES = [
   {
     id: 'property-tax-sf2472',
     group: 'law',
+    added: '2026-09-01',
     topics: ['tax', 'development'],
     title: 'Property taxes are going down. City budgets are getting capped.',
     meta: 'Senate File 2472, signed May 18, 2026, now law',
@@ -242,6 +281,7 @@ const ENTRIES = [
   {
     id: 'business-court-sf639',
     group: 'law',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'Iowa now has a court just for big business lawsuits',
     meta: 'Senate File 639, now law',
@@ -261,6 +301,7 @@ const ENTRIES = [
   {
     id: 'faster-filings-sf629',
     group: 'law',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'Business paperwork at the state should move faster',
     meta: 'Senate File 629, effective July 1, 2026',
@@ -279,6 +320,7 @@ const ENTRIES = [
   {
     id: 'child-care-hf2514',
     group: 'law',
+    added: '2026-09-01',
     topics: ['workforce'],
     title: 'Child care workers can now get child care help, permanently',
     meta: 'House File 2514, effective July 1, 2026',
@@ -296,6 +338,7 @@ const ENTRIES = [
   {
     id: 'startup-investment-sf2453',
     group: 'law',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'State universities have to invest in Iowa startups',
     meta: 'Senate File 2453, must comply by July 1, 2027',
@@ -314,6 +357,7 @@ const ENTRIES = [
   {
     id: 'cdl-english-sf2426',
     group: 'law',
+    added: '2026-09-01',
     topics: ['workforce'],
     title: 'New English test for commercial drivers',
     meta: 'Senate File 2426, now law',
@@ -331,6 +375,7 @@ const ENTRIES = [
   {
     id: 'bills-returning-2027',
     group: 'law',
+    added: '2026-09-01',
     topics: ['tax', 'workforce', 'development'],
     title: 'Three bills that failed and will probably be back',
     meta: 'Did not pass in 2026. Speak up before January.',
@@ -356,6 +401,7 @@ const ENTRIES = [
   {
     id: 'grants-start-here',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money'],
     title: 'Start here before you chase any grant',
     meta: 'Free help, no cost to you',
@@ -385,6 +431,7 @@ const ENTRIES = [
   {
     id: 'grants-training-staff',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money', 'workforce'],
     title: 'Money to train the people you already have',
     meta: 'Iowa Workforce Development and IEDA. Ongoing.',
@@ -413,6 +460,7 @@ const ENTRIES = [
   {
     id: 'grants-targeted-small-business',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money'],
     title: 'If you are a woman, minority, veteran with a service-connected disability, or a person with a disability',
     meta: 'Targeted Small Business certification, IEDA',
@@ -449,6 +497,7 @@ const ENTRIES = [
   {
     id: 'grants-food-and-farm',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Food, farm, and anything you make from Iowa products',
     meta: 'Choose Iowa Value-Added Grants. Next window opens December 2026.',
@@ -471,6 +520,7 @@ const ENTRIES = [
   {
     id: 'grants-manufacturers-and-startups',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Manufacturers, inventors, and anyone selling outside Iowa',
     meta: 'CIRAS, IEDA Innovation Continuum, and STEP',
@@ -495,6 +545,7 @@ const ENTRIES = [
   {
     id: 'grants-nonprofit-and-community',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Community project money, and the catch on it',
     meta: 'Prairie Meadows and Polk County. Applications open December, close late February.',
@@ -521,6 +572,7 @@ const ENTRIES = [
   {
     id: 'grants-where-to-look',
     group: 'money',
+    added: '2026-09-01',
     topics: ['money'],
     title: 'Where to look for everything else',
     meta: 'Two official listings, plus one common trap',
@@ -545,6 +597,7 @@ const ENTRIES = [
   {
     id: 'income-tax-amendment-sjr11',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['tax', 'elections'],
     title: 'Ballot question: make income tax increases harder',
     meta: 'Senate Joint Resolution 11, you vote on it November 3',
@@ -569,6 +622,7 @@ const ENTRIES = [
   {
     id: 'governor-race',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['elections', 'tax'],
     title: 'Governor: an open seat for the first time in 20 years',
     meta: 'Zach Lahn (R) and Rob Sand (D). Rated a toss-up.',
@@ -594,6 +648,7 @@ const ENTRIES = [
   {
     id: 'senate-race',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['elections'],
     title: 'U.S. Senate: another open seat',
     meta: 'Ashley Hinson (R), Josh Turek (D), Thomas Laehn (L)',
@@ -616,6 +671,7 @@ const ENTRIES = [
   {
     id: 'congressional-district',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['elections'],
     title: 'U.S. House: Polk City is in the 3rd District',
     meta: 'Zach Nunn (R) and Sarah Trone Garriott (D)',
@@ -642,6 +698,7 @@ const ENTRIES = [
   {
     id: 'state-legislature-races',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['elections', 'tax'],
     title: 'Your state senate seat is open for the first time in 15 years',
     meta: 'Polk City is in House District 45 and Senate District 23',
@@ -682,6 +739,7 @@ const ENTRIES = [
   {
     id: 'county-township-local-races',
     group: 'ballot',
+    added: '2026-09-01',
     topics: ['elections'],
     title: 'County offices, township officers, and judges',
     meta: 'Also on the November 3 ballot',
@@ -729,6 +787,7 @@ const ENTRIES = [
   {
     id: 'economic-development-manager',
     group: 'local',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'Polk City has someone working on business recruitment now',
     meta: 'Started July 2026',
@@ -749,6 +808,7 @@ const ENTRIES = [
   {
     id: 'cdbg-funding',
     group: 'local',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'Federal grant money renewed for Polk County',
     meta: 'Announced August 11, 2026',
@@ -768,6 +828,7 @@ const ENTRIES = [
   {
     id: 'commercial-residential-imbalance',
     group: 'local',
+    added: '2026-09-01',
     topics: ['development', 'tax', 'workforce'],
     title: 'Polk City has lots of houses and not enough businesses',
     meta: 'From the city comprehensive plan and council priorities',
@@ -791,6 +852,7 @@ const ENTRIES = [
   {
     id: 'project-watchlist',
     group: 'local',
+    added: '2026-09-01',
     topics: ['development'],
     title: 'Projects worth watching',
     meta: 'Checked and updated at each review',
