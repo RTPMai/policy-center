@@ -476,3 +476,133 @@ button.linkish{ font:inherit; color:var(--sun-ink); background:none; border:0; p
   .bar, .searchbar, .entry-actions, .toast, .crumb{ display:none !important; }
   details.entry{ break-inside:avoid; }
 }
+
+/* ================= Landing page, two doors ================= */
+
+.landing{ padding:52px 0 20px; text-align:center; }
+
+.landing-logo{ width:190px; height:auto; margin:0 auto 26px; display:block; }
+
+.landing-lede{
+  max-width:44ch; margin:0 auto 34px;
+  font-size:1.08rem; color:var(--navy-mid);
+}
+
+.doors{
+  display:grid; grid-template-columns:1fr; gap:16px;
+  max-width:820px; margin:0 auto; text-align:left;
+}
+@media (min-width:720px){ .doors{ grid-template-columns:1fr 1fr; } }
+
+a.door{
+  display:flex; flex-direction:column;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-top:6px solid var(--tint);
+  border-radius:var(--radius);
+  padding:28px 26px 24px;
+  text-decoration:none; color:var(--navy);
+}
+a.door:hover{ background:var(--tint-wash); border-color:var(--tint); }
+
+a.door h2{
+  font-family:"Fraunces",Georgia,serif;
+  font-weight:600; font-size:1.4rem; line-height:1.2;
+  margin:0 0 10px;
+}
+a.door p{ margin:0 0 20px; font-size:0.96rem; color:var(--navy-mid); flex:1; }
+
+.door-go{ font-size:0.9rem; font-weight:700; color:var(--tint-ink); }
+
+.landing-foot{
+  margin:38px 0 0; font-size:0.9rem; color:var(--navy-soft);
+  max-width:var(--measure);
+}
+.landing .landing-foot{ margin-left:auto; margin-right:auto; text-align:center; }
+
+/* ================= Membership ================= */
+
+.tier-jump{ margin:0 0 30px; }
+.tier-jump ul{
+  display:flex; flex-wrap:wrap; gap:8px;
+  list-style:none; padding:0; margin:0;
+}
+.tier-jump a{
+  display:block; padding:7px 15px;
+  font-size:0.86rem; font-weight:600;
+  color:var(--navy); background:var(--paper-warm);
+  border:1px solid var(--rule); border-radius:999px;
+  text-decoration:none;
+}
+.tier-jump a:hover{ border-color:var(--sun); background:var(--sun-wash); }
+
+.tier{
+  margin-bottom:22px;
+  border:1px solid var(--rule);
+  border-left:5px solid var(--tint);
+  border-radius:var(--radius);
+  background:var(--paper);
+  overflow:hidden;
+  scroll-margin-top:150px;
+}
+
+.tier-head{ padding:24px 26px 20px; background:var(--tint-wash); }
+
+.tier-head h2{
+  font-family:"Fraunces",Georgia,serif;
+  font-weight:700; font-size:1.5rem; line-height:1.15;
+  margin:0 0 4px;
+}
+
+.tier-price{
+  margin:0 0 4px;
+  font-family:"Fraunces",Georgia,serif;
+  font-size:1.5rem; font-weight:600; color:var(--tint-ink);
+}
+.tier-pricenote{ margin:0 0 12px; font-size:0.87rem; color:var(--navy-soft); }
+.tier-for{ margin:0; font-size:0.96rem; color:var(--navy-mid); max-width:var(--measure); }
+
+.tier-limited{
+  display:inline-block; margin-bottom:10px;
+  font-size:0.72rem; font-weight:700;
+  letter-spacing:0.03em; text-transform:uppercase;
+  background:var(--navy); color:#fff;
+  padding:4px 11px; border-radius:999px;
+}
+
+.tier-inherits{
+  margin:16px 0 0; padding-top:14px;
+  border-top:1px solid var(--rule);
+  font-size:0.92rem; font-weight:600; color:var(--navy-mid);
+}
+
+.benefits{ padding:8px 26px 18px; }
+
+details.benefit{ border-bottom:1px solid var(--rule-soft); }
+details.benefit:last-child{ border-bottom:0; }
+
+details.benefit > summary{
+  cursor:pointer; list-style:none;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; padding:13px 0;
+}
+details.benefit > summary::-webkit-details-marker{ display:none; }
+details.benefit > summary:hover .benefit-name{ color:var(--tint-ink); }
+details.benefit > summary:focus-visible{ outline:2px solid var(--tint); outline-offset:-2px; }
+
+.benefit-name{ font-size:0.99rem; font-weight:600; }
+
+details.benefit .chev{ width:18px; height:18px; flex:none; color:var(--tint-ink); }
+
+.benefit-detail{ padding:0 0 15px; }
+.benefit-detail p{
+  margin:0; max-width:var(--measure);
+  font-size:0.94rem; color:var(--navy-mid); line-height:1.6;
+}
+
+@media (max-width:600px){
+  .landing{ padding-top:36px; }
+  .landing-logo{ width:150px; }
+  .tier-head{ padding:20px 18px 16px; }
+  .benefits{ padding:6px 18px 14px; }
+}
