@@ -261,6 +261,12 @@
           (tier.limited ? '<span class="tier-limited">' + esc(tier.limited) + '</span>' : '') +
           '<h2>' + esc(tier.name) + '</h2>' +
           '<p class="tier-price">' + esc(tier.price) + '</p>' +
+          (tier.priceBands
+            ? '<ul class="price-bands">' + tier.priceBands.map(function (b) {
+                return '<li><span class="band-label">' + esc(b.label) + '</span>' +
+                  '<span class="band-price">' + esc(b.price) + '</span></li>';
+              }).join('') + '</ul>'
+            : '') +
           (tier.priceNote ? '<p class="tier-pricenote">' + esc(tier.priceNote) + '</p>' : '') +
           (tier.forWhom ? '<p class="tier-for">' + esc(tier.forWhom) + '</p>' : '') +
           (tier.inherits ? '<p class="tier-inherits">Everything in ' + esc(tier.inherits) + ', plus:</p>' : '') +
