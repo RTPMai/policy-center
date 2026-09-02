@@ -61,10 +61,6 @@ const BENEFITS = {
     name: 'Referral exclusivity',
     detail: 'When someone contacts the chamber looking for a plumber, a caterer, an insurance agent or anything else, we send them to members only. Non-members do not get referred, no matter how well known they are. This runs on every tier, including Basic, and it is the benefit most directly tied to getting you paying work.',
   },
-  'mailing-list': {
-    name: 'One-time member mailing list access',
-    detail: 'Once per membership year you can request the member contact list to send a single mailing or email to other members. Useful for introducing a new service, announcing a location change, or a member-only offer. One use per year keeps inboxes from being buried, which is what makes it worth anything.',
-  },
   'notary': {
     name: 'Notary access',
     detail: 'Free notary service through the chamber office when a notary is available. Call ahead rather than dropping in, since availability depends on staffing.',
@@ -83,7 +79,7 @@ const BENEFITS = {
   },
   'luncheon': {
     name: 'Luncheon access',
-    detail: 'Attend chamber luncheons, which combine a meal, a speaker and time to meet other members. Open to all members. Higher tiers include tickets rather than paying per event.',
+    detail: 'Attend the chamber luncheon, also called Lunch and Learn. Same event, two names. A meal, a speaker on a practical business topic, and time to meet other members. Open to every member at the member rate, paid per event. Higher tiers include prepaid tickets instead.',
   },
   'coffee-connections': {
     name: 'Coffee and Connections',
@@ -102,9 +98,9 @@ const BENEFITS = {
     name: 'Logo on the Get Involved page',
     detail: 'Your logo appears on the chamber website, linked to your site. This is the first benefit that puts your brand rather than just your name in front of people browsing the chamber site.',
   },
-  'lunch-learn-tickets': {
-    name: 'Lunch and Learn tickets',
-    detail: 'Prepaid seats at chamber Lunch and Learn sessions, which are shorter and more practical than luncheons and usually built around a specific business skill or topic. Tickets are transferable, so you can send an employee instead of going yourself.',
+  'luncheon-tickets': {
+    name: 'Luncheon tickets',
+    detail: 'Prepaid seats at the chamber luncheon, the same event as Lunch and Learn. Tickets are transferable, so you can send an employee instead of going yourself. They are one time use and they do not roll over. Three tickets means three seats across the year. Once you have used them you are welcome to keep attending, you just pay the member rate from then on.',
   },
   'legislator-coffee': {
     name: 'Invitation to the legislator coffee',
@@ -137,7 +133,7 @@ const BENEFITS = {
   },
   'eblast': {
     name: 'Stand-alone email to the full membership',
-    detail: 'One email of your own, sent to the entire chamber membership. Not a mention inside a newsletter, but a message that is entirely yours. Save it for something that warrants it, since it only works once a year.',
+    detail: 'One email of your own, sent to the entire chamber membership. Not a mention inside a newsletter, but a message that is entirely yours. You write it, the chamber sends it, which means it comes from an address members already trust and it does not land in spam. One per year, so save it for something that warrants it.',
   },
   'bank-rate': {
     name: 'Negotiated financial institution rate',
@@ -259,7 +255,6 @@ const TIERS = [
       'events-calendar',
       'luncheon',
       'coffee-connections',
-      'mailing-list',
       'notary',
     ],
   },
@@ -271,7 +266,7 @@ const TIERS = [
     forWhom: 'For businesses that want visibility and a seat at the table, not just a listing.',
     benefits: [
       'logo-get-involved',
-      { id: 'lunch-learn-tickets', label: '3 Lunch and Learn tickets' },
+      { id: 'luncheon-tickets', label: '3 luncheon tickets' },
       'legislator-coffee',
       'host-networking',
       'welcome-kit-contribute',
@@ -287,7 +282,7 @@ const TIERS = [
       'email-sig-logo',
       'golf-hole',
       { id: 'sponsorship-credit', label: '$250 sponsorship credit' },
-      { id: 'lunch-learn-tickets', label: '6 Lunch and Learn tickets total' },
+      { id: 'luncheon-tickets', label: '6 luncheon tickets total, not 6 more' },
       { id: 'social-spotlight', label: '2 social media spotlights a year' },
       'eblast',
       'bank-rate',
@@ -326,7 +321,7 @@ const TIERS = [
       'priority-scheduling',
       { id: 'golf-foursome', label: 'Two golf foursomes' },
       { id: 'sponsorship-credit', label: '$1,000 sponsorship credit' },
-      { id: 'lunch-learn-tickets', label: '12 Lunch and Learn tickets' },
+      { id: 'luncheon-tickets', label: '12 luncheon tickets total' },
       { id: 'social-spotlight', label: 'Monthly social media spotlight rotation' },
       { id: 'impact-report', label: 'In-person annual impact report presentation' },
     ],
