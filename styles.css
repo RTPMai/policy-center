@@ -608,3 +608,27 @@ details.benefit .chev{ width:18px; height:18px; flex:none; color:var(--tint-ink)
   .tier-head{ padding:20px 18px 16px; }
   .benefits{ padding:6px 18px 14px; }
 }
+
+/* ---- size-based pricing, shown as a rate table not a sentence ---- */
+
+.price-bands{
+  list-style:none; padding:0;
+  margin:14px 0 4px;
+  display:grid; grid-template-columns:1fr; gap:0;
+  max-width:420px;
+  border-top:1px solid var(--rule);
+}
+@media (min-width:560px){ .price-bands{ grid-template-columns:1fr 1fr; gap:0 22px; } }
+
+.price-bands li{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:12px; padding:7px 0;
+  border-bottom:1px solid var(--rule);
+}
+
+.band-label{ font-size:0.9rem; color:var(--navy-mid); }
+.band-price{
+  font-family:"Public Sans",system-ui,sans-serif;
+  font-size:1.02rem; font-weight:700;
+  color:var(--tint-ink); white-space:nowrap;
+}
