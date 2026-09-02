@@ -181,10 +181,6 @@ const BENEFITS = {
     name: 'Feature profile in an annual chamber publication',
     detail: 'A written profile of your business, not an advertisement. Your story, your people and what you do, distributed to the membership and the community.',
   },
-  'champion-dinner': {
-    name: 'Private Champion dinner',
-    detail: 'An annual dinner limited to the Champion members, the chamber board, and visiting officials. Three businesses in a room with the people who make local decisions. That access is the point of the tier.',
-  },
   'priority-scheduling': {
     name: 'Priority scheduling',
     detail: 'First choice of dates for ribbon cuttings, hosted events and chamber appearances. Matters most around a grand opening or a seasonal launch, where the date is not flexible for you.',
@@ -242,7 +238,16 @@ const TIERS = [
     id: 'basic',
     name: 'Basic Business',
     price: '$200 to $600',
-    priceNote: '$200 for under 5 employees, $400 for 5 to 15, $600 for 16 or more. Nonprofits $150.',
+
+    /* Where a tier is priced by size, list the bands here instead of
+       burying them in a sentence. They render as a rate table, because
+       "what do I actually pay" is the first question anyone has. */
+    priceBands: [
+      { label: 'Under 5 employees', price: '$200' },
+      { label: '5 to 15 employees', price: '$400' },
+      { label: '16 or more employees', price: '$600' },
+      { label: 'Nonprofit, any size', price: '$150' },
+    ],
     forWhom: 'The working level of chamber membership. Everything a local business needs to be found, referred and connected.',
     benefits: [
       'directory-listing',
@@ -314,7 +319,6 @@ const TIERS = [
     forWhom: 'The top level, deliberately scarce. Influence over chamber priorities and access to the people making local decisions.',
     benefits: [
       'priorities-roundtable',
-      'champion-dinner',
       'signature-event-naming',
       'annual-publication-profile',
       'champion-plaque',
