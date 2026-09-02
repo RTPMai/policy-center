@@ -81,6 +81,7 @@ a:hover{ color:var(--tint-ink,var(--navy)); }
 .brand-full{ height:38px; width:auto; display:block; }
 .brand-mark{ display:none; height:36px; width:auto; }
 
+.brand-sub[hidden]{ display:none; }
 .brand-sub{
   font-family:"Fraunces",Georgia,serif;
   font-weight:600;
@@ -115,6 +116,7 @@ a:hover{ color:var(--tint-ink,var(--navy)); }
 
 /* ================= Search ================= */
 
+.searchbar[hidden]{ display:none; }
 .searchbar{ background:var(--paper-warm); border-bottom:1px solid var(--rule); padding:12px 0; }
 
 .search-field{ position:relative; display:flex; align-items:center; }
@@ -460,7 +462,8 @@ button.linkish{ font:inherit; color:var(--sun-ink); background:none; border:0; p
   body{ font-size:16px; }
   .brand-full{ display:none; }
   .brand-mark{ display:block; }
-  .brand-sub{ font-size:0.9rem; }
+  .brand-sub[hidden]{ display:none; }
+.brand-sub{ font-size:0.9rem; }
   .menu-btn{ display:block; }
   .sections{ display:none; }
   .sections.open{ display:block; }
