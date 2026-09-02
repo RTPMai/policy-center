@@ -481,7 +481,7 @@
   /* ---------- chrome ---------- */
 
   function renderChrome() {
-    document.title = SITE.title + ' | ' + SITE.org;
+    setChrome(null, '');
 
     var freshCount = changed().length;
 
@@ -511,6 +511,19 @@
       '<a href="' + esc(SITE.chamberUrl) + '">Back to the chamber website</a>';
   }
 
+  /* The Business Policy Center is one door, not the whole site. Its name,
+     its search box and its page titles stay on the policy side. */
+  function setChrome(pageTitle, subLabel, showSearch) {
+    document.title = pageTitle ? pageTitle + ' | ' + SITE.org : SITE.org;
+    var sub = document.getElementById('brand-sub');
+    if (sub) {
+      sub.textContent = subLabel || '';
+      sub.hidden = !subLabel;
+    }
+    var bar = document.querySelector('.searchbar');
+    if (bar) bar.hidden = !showSearch;
+  }
+
   function markNav(route) {
     Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
       if (a.getAttribute('data-route') === route) a.setAttribute('aria-current', 'page');
@@ -529,22 +542,38 @@
     var h = location.hash || '#/';
     var openEntry = null;
 
+    var POLICY = SITE.title;
+
     if (h.indexOf('#/search') === 0) {
       var q = decodeURIComponent((h.split('?q=')[1] || '').replace(/\+/g, ' '));
       renderSearch(q);
       markNav(null);
+      setChrome('Search | ' + POLICY, POLICY, true);
     } else if (h.indexOf('#/') === 0) {
       var id = h.slice(2);
-      if (!id) { renderLanding(); markNav('/'); }
-      else if (id === 'membership') { renderMembership(); markNav('/membership'); }
-      else if (id === 'policy') { renderHome(); markNav('/policy'); }
-      else if (id === 'terms') { renderTerms(); markNav('/terms'); }
-      else if (id === 'whats-new') { renderWhatsNew(); markNav('/whats-new'); }
-      else if (groupById(id)) { renderSection(id); markNav('/' + id); }
-      else { renderLanding(); markNav('/'); }
+      if (!id) {
+        renderLanding(); markNav('/'); setChrome(null, '', false);
+      } else if (id === 'membership') {
+        renderMembership(); markNav('/membership');
+        setChrome(MEMBERSHIP.title, 'Membership', false);
+      } else if (id === 'policy') {
+        renderHome(); markNav('/policy'); setChrome(POLICY, POLICY, true);
+      } else if (id === 'terms') {
+        renderTerms(); markNav('/terms');
+        setChrome('Words and sources | ' + POLICY, POLICY, true);
+      } else if (id === 'whats-new') {
+        renderWhatsNew(); markNav('/whats-new');
+        setChrome('What changed | ' + POLICY, POLICY, true);
+      } else if (groupById(id)) {
+        renderSection(id); markNav('/' + id);
+        setChrome(groupById(id).title + ' | ' + POLICY, POLICY, true);
+      } else {
+        renderLanding(); markNav('/'); setChrome(null, '', false);
+      }
     } else if (h.indexOf('#tier-') === 0) {
       renderMembership();
       markNav('/membership');
+      setChrome(MEMBERSHIP.title, 'Membership', false);
       var tierEl = document.getElementById(h.slice(1));
       if (tierEl && tierEl.scrollIntoView) {
         setTimeout(function () { tierEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
@@ -555,14 +584,17 @@
       if (e && e.archived) {
         renderTerms();
         markNav('/terms');
+        setChrome(e.title + ' | ' + POLICY, POLICY, true);
         openEntry = e.id;
       } else if (e) {
         renderSection(e.group);
         markNav('/' + e.group);
+        setChrome(e.title + ' | ' + POLICY, POLICY, true);
         openEntry = e.id;
       } else {
         renderLanding();
         markNav('/');
+        setChrome(null, '', false);
       }
     }
 
