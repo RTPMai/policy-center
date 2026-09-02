@@ -5,8 +5,10 @@
    You should not need to edit this file. All content lives in content.js.
 
    Addresses this file understands:
-     #/            the home page
-     #/grants      a section, using the group id
+     #/            the chamber landing page, two doors
+     #/membership  membership levels and benefits
+     #/policy      the Business Policy Center home
+     #/grants      a policy section, using the group id
      #/whats-new   everything added or changed since the last review
      #/terms       words, sources, and the archive
      #/search?q=x  search across everything
@@ -30,7 +32,8 @@
 
   /* ---------- if content.js failed to load, say so instead of showing nothing ---------- */
 
-  if (typeof ENTRIES === 'undefined' || typeof GROUPS === 'undefined' || typeof SITE === 'undefined') {
+  if (typeof ENTRIES === 'undefined' || typeof GROUPS === 'undefined' || typeof SITE === 'undefined' ||
+      typeof TIERS === 'undefined' || typeof BENEFITS === 'undefined' || typeof MEMBERSHIP === 'undefined') {
     view.innerHTML =
       '<div class="t-navy"><header class="sec-head"><h1>This page did not load correctly</h1>' +
       '<p>The content file is missing or has an error in it. Try refreshing. If it keeps happening, ' +
@@ -213,6 +216,79 @@
 
   /* ---------- pages ---------- */
 
+  function renderLanding() {
+    view.innerHTML =
+      '<section class="landing">' +
+        '<img src="assets/logo-stacked.svg" alt="Polk City Area Chamber of Commerce" class="landing-logo">' +
+        '<p class="landing-lede">Two things members ask us for most. Pick one.</p>' +
+        '<div class="doors">' +
+          '<a class="door t-sun" href="#/membership">' +
+            '<h2>' + esc(MEMBERSHIP.title) + '</h2>' +
+            '<p>What each level of membership costs and exactly what comes with it. Every benefit opens up to explain what it actually means.</p>' +
+            '<span class="door-go">See the levels</span>' +
+          '</a>' +
+          '<a class="door t-winter" href="#/policy">' +
+            '<h2>Business Policy Center</h2>' +
+            '<p>New laws, the November ballot, grants, taxes and local decisions, explained in plain language for a business here.</p>' +
+            '<span class="door-go">Open the Policy Center</span>' +
+          '</a>' +
+        '</div>' +
+        '<p class="landing-foot"><a href="' + esc(SITE.chamberUrl) + '">Back to the main chamber website</a></p>' +
+      '</section>';
+  }
+
+  function benefitHTML(ref) {
+    var id = typeof ref === 'string' ? ref : ref.id;
+    var b = BENEFITS[id];
+    if (!b) return '';
+    var label = (typeof ref === 'object' && ref.label) ? ref.label : b.name;
+    return '<details class="benefit">' +
+      '<summary><span class="benefit-name">' + esc(label) + '</span>' +
+        '<svg class="chev" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+          '<path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>' +
+      '</summary>' +
+      '<div class="benefit-detail"><p>' + esc(b.detail) + '</p></div>' +
+    '</details>';
+  }
+
+  function renderMembership() {
+    var tints = ['t-navy', 't-spring', 't-sun', 't-winter', 't-autumn', 't-navy'];
+
+    var tiers = TIERS.map(function (tier, i) {
+      return '<section class="tier ' + tints[i % tints.length] + '" id="tier-' + esc(tier.id) + '">' +
+        '<header class="tier-head">' +
+          (tier.limited ? '<span class="tier-limited">' + esc(tier.limited) + '</span>' : '') +
+          '<h2>' + esc(tier.name) + '</h2>' +
+          '<p class="tier-price">' + esc(tier.price) + '</p>' +
+          (tier.priceNote ? '<p class="tier-pricenote">' + esc(tier.priceNote) + '</p>' : '') +
+          (tier.forWhom ? '<p class="tier-for">' + esc(tier.forWhom) + '</p>' : '') +
+          (tier.inherits ? '<p class="tier-inherits">Everything in ' + esc(tier.inherits) + ', plus:</p>' : '') +
+        '</header>' +
+        '<div class="benefits">' + tier.benefits.map(benefitHTML).join('') + '</div>' +
+      '</section>';
+    }).join('');
+
+    var jump = '<nav class="tier-jump" aria-label="Jump to a level"><ul>' +
+      TIERS.map(function (t2) {
+        return '<li><a href="#tier-' + esc(t2.id) + '">' + esc(t2.name) + '</a></li>';
+      }).join('') + '</ul></nav>';
+
+    view.innerHTML = '<div class="t-sun">' +
+      '<p class="crumb"><a href="#/">Back to the start</a></p>' +
+      (MEMBERSHIP.draft
+        ? '<div class="expired"><strong>Draft, not yet approved.</strong> ' + esc(MEMBERSHIP.draftNote) + '</div>'
+        : '') +
+      '<header class="sec-head">' +
+        '<h1>' + esc(MEMBERSHIP.title) + '</h1>' +
+        '<p>' + esc(MEMBERSHIP.intro) + '</p>' +
+      '</header>' +
+      jump +
+      tiers +
+      '<p class="landing-foot">' + esc(MEMBERSHIP.footnote) + '</p>' +
+    '</div>';
+  }
+
   function renderHome() {
     var cards = GROUPS.map(function (g) {
       var n = inGroup(g.id).length;
@@ -248,6 +324,7 @@
       : '';
 
     view.innerHTML =
+      '<p class="crumb"><a href="#/">Back to the start</a></p>' +
       '<section class="hero">' +
         '<h1>' + esc(SITE.title) + '</h1>' +
         '<p class="intro">' + esc(SITE.intro) + '</p>' +
@@ -282,7 +359,7 @@
       : '';
 
     view.innerHTML = '<div class="' + tint(g) + '">' +
-      '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
+      '<p class="crumb"><a href="#/policy">Back to all sections</a></p>' +
       '<header class="sec-head">' +
         '<h1>' + esc(g.title) + '</h1>' +
         '<p>' + esc(g.lede) + '</p>' +
@@ -323,7 +400,7 @@
         esc(SITE.reviewedOn) + '.</p>';
 
     view.innerHTML = '<div class="t-navy">' +
-      '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
+      '<p class="crumb"><a href="#/policy">Back to all sections</a></p>' +
       '<header class="sec-head">' +
         '<h1>What changed</h1>' +
         '<p>Everything added or rewritten since the last review, so you do not have to reread the whole page.</p>' +
@@ -340,7 +417,7 @@
       : '';
 
     view.innerHTML = '<div class="t-navy">' +
-      '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
+      '<p class="crumb"><a href="#/policy">Back to all sections</a></p>' +
       '<header class="sec-head">' +
         '<h1>Words and sources</h1>' +
         '<p>Plain definitions for the terms that come up again and again, and the full list of what we read to keep this page current.</p>' +
@@ -390,7 +467,7 @@
     }
 
     view.innerHTML = '<div class="t-navy">' +
-      '<p class="crumb"><a href="#/">Back to all sections</a></p>' +
+      '<p class="crumb"><a href="#/policy">Back to all sections</a></p>' +
       '<header class="sec-head">' +
         '<h1>Results for &ldquo;' + esc(q) + '&rdquo;</h1>' +
         '<p>Searching every section at once.</p>' +
@@ -398,7 +475,7 @@
     '</div>';
 
     var reset = document.getElementById('reset');
-    if (reset) reset.addEventListener('click', function () { go('#/'); });
+    if (reset) reset.addEventListener('click', function () { go('#/policy'); });
   }
 
   /* ---------- chrome ---------- */
@@ -409,7 +486,9 @@
     var freshCount = changed().length;
 
     nav.innerHTML =
-      '<li><a href="#/" data-route="/">Home</a></li>' +
+      '<li><a href="#/" data-route="/">Start</a></li>' +
+      '<li><a href="#/membership" data-route="/membership" style="--nav-tint:var(--sun)">Membership</a></li>' +
+      '<li><a href="#/policy" data-route="/policy" style="--nav-tint:var(--winter)">Policy Center</a></li>' +
       GROUPS.map(function (g) {
         return '<li><a href="#/' + esc(g.id) + '" data-route="/' + esc(g.id) + '" ' +
           'style="--nav-tint:var(--' + esc(g.season) + ')">' + esc(g.nav) +
@@ -456,11 +535,21 @@
       markNav(null);
     } else if (h.indexOf('#/') === 0) {
       var id = h.slice(2);
-      if (!id) { renderHome(); markNav('/'); }
+      if (!id) { renderLanding(); markNav('/'); }
+      else if (id === 'membership') { renderMembership(); markNav('/membership'); }
+      else if (id === 'policy') { renderHome(); markNav('/policy'); }
       else if (id === 'terms') { renderTerms(); markNav('/terms'); }
       else if (id === 'whats-new') { renderWhatsNew(); markNav('/whats-new'); }
       else if (groupById(id)) { renderSection(id); markNav('/' + id); }
-      else { renderHome(); markNav('/'); }
+      else { renderLanding(); markNav('/'); }
+    } else if (h.indexOf('#tier-') === 0) {
+      renderMembership();
+      markNav('/membership');
+      var tierEl = document.getElementById(h.slice(1));
+      if (tierEl && tierEl.scrollIntoView) {
+        setTimeout(function () { tierEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+        return;
+      }
     } else {
       var e = entryById(h.slice(1));
       if (e && e.archived) {
@@ -472,7 +561,7 @@
         markNav('/' + e.group);
         openEntry = e.id;
       } else {
-        renderHome();
+        renderLanding();
         markNav('/');
       }
     }
@@ -521,14 +610,14 @@
     clearBtn.hidden = !q;
     debounce = setTimeout(function () {
       if (q.trim()) go('#/search?q=' + encodeURIComponent(q.trim()));
-      else go('#/');
+      else go('#/policy');
     }, 220);
   });
 
   clearBtn.addEventListener('click', function () {
     searchInput.value = '';
     clearBtn.hidden = true;
-    go('#/');
+    go('#/policy');
     searchInput.focus();
   });
 
