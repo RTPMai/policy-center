@@ -319,7 +319,9 @@
                 '<span class="fresh-meta">' + esc(changeFlag(e)) + ' in ' + esc(g ? g.nav : '') + '</span></li>';
             }).join('') +
           '</ul>' +
-          (fresh.length > 6 ? '<p><a href="#/whats-new">See all ' + fresh.length + ' changes</a></p>' : '') +
+          '<p><a href="#/whats-new">' +
+            (fresh.length > 6 ? 'See all ' + fresh.length + ' changes' : 'Open the full list of changes') +
+          '</a></p>' +
         '</section>'
       : '';
 
@@ -483,21 +485,18 @@
   function renderChrome() {
     setChrome(null, '');
 
+    /* Two destinations only. The logo is the way back to the start, and the
+       Policy Center sections are reached from its own home page. A rail of
+       nine links was doing more harm than good. */
     var freshCount = changed().length;
+    var anyStale = GROUPS.some(isExpired);
 
     nav.innerHTML =
-      '<li><a href="#/" data-route="/">Start</a></li>' +
       '<li><a href="#/membership" data-route="/membership" style="--nav-tint:var(--sun)">Membership</a></li>' +
-      '<li><a href="#/policy" data-route="/policy" style="--nav-tint:var(--winter)">Policy Center</a></li>' +
-      GROUPS.map(function (g) {
-        return '<li><a href="#/' + esc(g.id) + '" data-route="/' + esc(g.id) + '" ' +
-          'style="--nav-tint:var(--' + esc(g.season) + ')">' + esc(g.nav) +
-          (isExpired(g) ? '<span class="nav-stale" title="Out of date">!</span>' : '') + '</a></li>';
-      }).join('') +
-      (freshCount
-        ? '<li><a href="#/whats-new" data-route="/whats-new">What changed<span class="nav-count">' + freshCount + '</span></a></li>'
-        : '') +
-      '<li><a href="#/terms" data-route="/terms">Words and sources</a></li>';
+      '<li><a href="#/policy" data-route="/policy" style="--nav-tint:var(--winter)">Policy Center' +
+        (anyStale ? '<span class="nav-stale" title="Something on this side is out of date">!</span>' : '') +
+        (freshCount ? '<span class="nav-count" title="' + freshCount + ' items changed since the last review">' + freshCount + '</span>' : '') +
+      '</a></li>';
 
     document.getElementById('foot-review').textContent =
       SITE.org + '. Last reviewed ' + SITE.reviewedOn +
@@ -525,6 +524,8 @@
   }
 
   function markNav(route) {
+    /* Everything under the Policy Center marks the Policy Center item. */
+    if (route && route !== '/membership' && route !== '/') route = '/policy';
     Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
       if (a.getAttribute('data-route') === route) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
@@ -598,8 +599,8 @@
       }
     }
 
-    sectionsEl.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
+    if (sectionsEl) sectionsEl.classList.remove('open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
 
     if (openEntry) {
       var el = document.getElementById(openEntry);
@@ -653,10 +654,12 @@
     searchInput.focus();
   });
 
-  menuBtn.addEventListener('click', function () {
-    var open = sectionsEl.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-  });
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = sectionsEl.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+  }
 
   window.addEventListener('hashchange', route);
 
