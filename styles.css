@@ -464,12 +464,8 @@ button.linkish{ font:inherit; color:var(--sun-ink); background:none; border:0; p
   .brand-mark{ display:block; }
   .brand-sub[hidden]{ display:none; }
 .brand-sub{ font-size:0.9rem; }
-  .menu-btn{ display:block; }
-  .sections{ display:none; }
-  .sections.open{ display:block; }
-  .sections ul{ flex-direction:column; gap:0; padding-bottom:8px; }
-  .sections a{ padding:13px 4px; border-bottom:1px solid var(--rule-soft); }
-  .sections a[aria-current="page"]{ border-bottom-color:var(--rule-soft); color:var(--navy); background:var(--paper-warm); }
+  .menu-btn{ display:none; }
+  .sections ul{ gap:0 18px; }
   details.entry > summary{ padding:16px 16px; }
   .body{ padding:0 16px 18px; }
   .foot-logo{ width:88px; }
