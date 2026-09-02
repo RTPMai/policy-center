@@ -111,7 +111,7 @@ const TOOLS = [
    "blurb" is what shows on the home page card. */
 const GROUPS = [
   {
-    id: 'money',
+    id: 'grants',
     nav: 'Grants',
     season: 'sun',
     title: 'Money you can go after',
@@ -640,7 +640,7 @@ const ENTRIES = [
 
   {
     id: 'grants-start-here',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     referrals: 'banking',
     topics: ['money'],
@@ -671,7 +671,7 @@ const ENTRIES = [
 
   {
     id: 'grants-training-staff',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     updated: '2026-09-01',
     referrals: 'hr',
@@ -706,7 +706,7 @@ const ENTRIES = [
 
   {
     id: 'grants-targeted-small-business',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     topics: ['money'],
     title: 'If you are a woman, minority, veteran with a service-connected disability, or a person with a disability',
@@ -743,7 +743,7 @@ const ENTRIES = [
 
   {
     id: 'grants-food-and-farm',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     updated: '2026-09-01',
     topics: ['money', 'development'],
@@ -770,7 +770,7 @@ const ENTRIES = [
 
   {
     id: 'grants-manufacturers-and-startups',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     updated: '2026-09-01',
     topics: ['money', 'development'],
@@ -799,7 +799,7 @@ const ENTRIES = [
 
   {
     id: 'grants-nonprofit-and-community',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     topics: ['money', 'development'],
     title: 'Community project money, and the catch on it',
@@ -826,7 +826,7 @@ const ENTRIES = [
 
   {
     id: 'grants-where-to-look',
-    group: 'money',
+    group: 'grants',
     added: '2026-09-01',
     topics: ['money'],
     title: 'Where to look for everything else',
