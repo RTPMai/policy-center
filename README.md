@@ -2,12 +2,14 @@
 
 | File | What it does | Do you edit it? |
 | --- | --- | --- |
-| `content.js` | Every word on the page. Entries, sections, links, dates. | **Yes. This is the one.** |
+| `content.js` | The Policy Center. Entries, sections, links, dates. | **Yes** |
+| `membership.js` | Membership tiers, prices and benefit descriptions | **Yes** |
 | `index.html` | The page skeleton | Rarely |
 | `styles.css` | Colors, type, layout | Only to change the look |
 | `app.js` | Sections, search, share links | No |
 | `assets/` | The chamber logos and the social share card | No |
 | `robots.txt`, `sitemap.xml` | Tell search engines the site exists | Once, if the domain changes |
+| `SOURCES.md` | Where every fact comes from and how to verify it | Read it before writing an entry |
 
 ### How the page is organised
 
@@ -26,6 +28,7 @@ Every color on the site comes out of the chamber logo, and each section is tied 
 
 | Section | Season | Color |
 | --- | --- | --- |
+| Membership | Summer sun | `#F19C30` |
 | Grants | Summer sun | `#F19C30` |
 | Ballot | Winter | `#68A1B8` |
 | Taxes | Wordmark navy | `#002734` |
@@ -91,6 +94,8 @@ Two options, and you can do both.
 
 Set aside 30 minutes. Work down this list.
 
+Read `SOURCES.md` before you write anything. It lists the authoritative source for each topic, which sources carry a bias, and which existing entries are thinly sourced.
+
 1. **Check the city.** Council agendas and minutes since last time. This is where local items surface first and where most of the value on this page comes from.
 2. **Check the county.** News and announcements, for grants, CDBG activity, and supervisor decisions.
 3. **Check the state.** During session, January through roughly April, do this weekly instead of monthly. Outside session, monthly is plenty.
@@ -154,6 +159,22 @@ Someone needs to actually rewrite that section with the results and what they me
 
 ---
 
+## The membership page is a draft until you say otherwise
+
+At the top of `membership.js`:
+
+```js
+draft: true,
+```
+
+While that is true, a red banner sits at the top of the membership page saying the structure is a proposal under review and should not be quoted to prospective members. Set it to `false` only after the board has voted on the tiers and the prices.
+
+Two things to settle before you do:
+
+The Community Champion tier is invitation only and capped at three. Publishing that without written invitation criteria, covering revenue size, tenure, prior Sponsor history and board nomination, invites an awkward conversation with the fourth business that wants in. Write the criteria first.
+
+The negotiated financial institution rate is listed as an Investor benefit. Until an agreement is actually signed with one of the three member banks, that benefit does not exist. Either sign it or take it off the page.
+
 ## Part 3. Sharing single items
 
 Every entry has its own link. Open an entry and click **Copy link to this item**, or just copy what is in the browser address bar. You get something like:
@@ -169,6 +190,14 @@ You can also link straight to a whole section, which is handy when you post abou
 ```
 https://policy.polkcitychamber.com/#/grants
 https://policy.polkcitychamber.com/#/ballot
+https://policy.polkcitychamber.com/#/membership
+```
+
+Individual membership tiers have their own links too, which is useful when someone asks what a level includes:
+
+```
+https://policy.polkcitychamber.com/#tier-partner
+https://policy.polkcitychamber.com/#tier-champion
 ```
 
 ---
@@ -194,7 +223,8 @@ Almost always a typo in `content.js`. Usually a missing comma, an unmatched quot
 
 
 - [ ] Spot check the three grant entries not yet rechecked: `grants-start-here`, `grants-targeted-small-business`, `grants-nonprofit-and-community`, and `grants-where-to-look`. The other three were checked and corrected in September, and two of them had errors.
-- [ ] Open the site on a phone and walk all five sections. That is how most members will see it.
+- [ ] Open the site on a phone and walk both doors, all six tiers and all five Policy Center sections. That is how most members will see it.
+- [ ] Board votes on the membership structure and prices, then set `draft: false` in `membership.js`.
 - [ ] Have a board member read every "what this means" paragraph for tone and fairness.
 - [ ] Put a recurring monthly reminder on the review owner's calendar, and a separate one-off reminder for November 4 to rewrite the Ballot section with results.
 - [ ] Confirm the board is comfortable with the "Where the chamber stands on politics" statement in `index.html`.
